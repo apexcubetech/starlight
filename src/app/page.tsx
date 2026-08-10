@@ -22,9 +22,18 @@ export default function HomePage() {
     <SiteShell headerVariant="overlay">
       {/* Hero */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-40" aria-hidden="true" />
-        <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-gold/30 to-transparent" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-gold/20 to-transparent" aria-hidden="true" />
+        <div
+          className="absolute inset-0 grid-bg opacity-40"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-gold/30 to-transparent"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-gold/20 to-transparent"
+          aria-hidden="true"
+        />
 
         <div className="relative mx-auto max-w-7xl px-4 py-32 text-center sm:px-6 lg:px-8">
           <div className="animate-fade-up mx-auto mb-10 inline-flex items-center justify-center">
@@ -79,8 +88,8 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-up mx-auto mt-20 flex items-center justify-center gap-3 [animation-delay:600ms]">
-            <div className="gold-line w-16" />
-            <span className="kicker">Scroll</span>
+            {/* <div className="gold-line w-16" /> */}
+            <span className="kicker"></span>
             <div className="gold-line w-16" />
           </div>
         </div>
@@ -145,7 +154,9 @@ export default function HomePage() {
                 {article.titleTamil}
               </TamilText>
               <p className="text-body mt-4">{article.excerpt}</p>
-              <span className="link-gold mt-5 inline-block text-sm">Read →</span>
+              <span className="link-gold mt-5 inline-block text-sm">
+                Read →
+              </span>
             </Card>
           ))}
         </div>
@@ -163,7 +174,10 @@ export default function HomePage() {
               {c.bookHighlight.titleTamil}
             </TamilText>
             <p className="text-body mt-5">{c.bookHighlight.description}</p>
-            <Link href={c.bookHighlight.href} className="link-gold mt-6 inline-block">
+            <Link
+              href={c.bookHighlight.href}
+              className="link-gold mt-6 inline-block"
+            >
               Learn more →
             </Link>
           </Card>
@@ -174,9 +188,13 @@ export default function HomePage() {
                 <h3 className="section-heading text-lg group-hover:text-gold-text transition-colors">
                   {cta.title}
                 </h3>
-                <TamilText className="text-base text-gold-text/90">{cta.titleTamil}</TamilText>
+                <TamilText className="text-base text-gold-text/90">
+                  {cta.titleTamil}
+                </TamilText>
                 <p className="text-body mt-3">{cta.description}</p>
-                <span className="link-gold mt-4 inline-block text-sm">Learn more →</span>
+                <span className="link-gold mt-4 inline-block text-sm">
+                  Learn more →
+                </span>
               </Card>
             ))}
           </div>
@@ -208,7 +226,9 @@ export default function HomePage() {
           <p className="text-2xl font-bold italic leading-relaxed text-foreground sm:text-3xl">
             &ldquo;{c.closingQuote.text}&rdquo;
           </p>
-          <TamilText className="mt-6 text-lg">{c.closingQuote.textTamil}</TamilText>
+          <TamilText className="mt-6 text-lg">
+            {c.closingQuote.textTamil}
+          </TamilText>
           <div className="mt-12">
             <Button href="/contact">Get in Touch</Button>
           </div>
