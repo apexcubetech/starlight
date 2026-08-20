@@ -1,11 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { mainNavigation, siteConfig } from "@/lib/navigation";
+import { FaWhatsapp } from "react-icons/fa";
+import { mainNavigation, siteConfig, uiStrings } from "@/lib/navigation";
+import { pickLocalized } from "@/lib/i18n";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function Footer() {
+  const { language } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const copyright = uiStrings.copyright[language].replace(
+    "{year}",
+    String(currentYear),
+  );
 
   return (
     <footer className="relative border-t border-border bg-surface/80 backdrop-blur-sm">
@@ -25,55 +34,48 @@ export function Footer() {
                 Starlight Reels
               </span>
             </Link>
-            <p className="mt-5 max-w-xs text-sm font-medium leading-relaxed text-muted">
-              {siteConfig.description}
+            <p className="mt-5 max-w-xs text-sm font-semibold leading-relaxed text-foreground/90">
+              {pickLocalized(
+                siteConfig.footerRole,
+                siteConfig.footerRoleTamil,
+                language,
+              )}
             </p>
-            <p className="font-tamil mt-3 text-sm text-gold-text/90">
-              {siteConfig.taglineTamil}
+            <p className="mt-2 max-w-xs text-sm font-medium leading-relaxed text-muted">
+              {pickLocalized(
+                siteConfig.description,
+                siteConfig.descriptionTamil,
+                language,
+              )}
             </p>
           </div>
           <div className="w-full md:text-center">
-            <h2 className="kicker">Navigation</h2>
+            <h2 className="kicker">{uiStrings.navigation[language]}</h2>
             <ul className="mt-5 space-y-2.5">
-              {mainNavigation.slice(0, 6).map((item) => (
+              {mainNavigation.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     className="text-sm font-semibold text-muted transition-colors hover:text-gold-text"
                   >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="hidden">
-            <h2 className="kicker">More</h2>
-            <ul className="mt-5 space-y-2.5">
-              {mainNavigation.slice(6).map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm font-semibold text-muted transition-colors hover:text-gold-text"
-                  >
-                    {item.label}
+                    {pickLocalized(item.label, item.labelTamil, language)}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
           <div className="w-full md:text-center">
-            <h2 className="kicker">Connect</h2>
+            <h2 className="kicker">{uiStrings.connect[language]}</h2>
             <ul className="mt-5 space-y-2.5">
               <li>
                 <a
-                  href={siteConfig.facebookUrl}
+                  href={`https://wa.me/${siteConfig.whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 text-sm font-semibold text-muted transition-colors hover:text-gold-text"
                 >
-                  <FaFacebook className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  Facebook
+                  <FaWhatsapp className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  {uiStrings.whatsapp[language]} ({siteConfig.whatsappDisplay})
                 </a>
               </li>
               <li>
@@ -85,7 +87,7 @@ export function Footer() {
                     className="h-4 w-4 shrink-0"
                     aria-hidden="true"
                   />
-                  Email
+                  {uiStrings.email[language]}
                 </a>
               </li>
             </ul>
@@ -94,13 +96,8 @@ export function Footer() {
 
         <div className="gold-line mt-14" />
 
-        <div className="mt-8 flex flex-col gap-2 text-sm font-medium text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {currentYear} {siteConfig.name}. {siteConfig.personName}.
-          </p>
-          <p className="font-tamil text-gold-text/85">
-            {siteConfig.personNameTamil}
-          </p>
+        <div className="mt-8 text-sm font-medium text-muted">
+          <p>{copyright}</p>
         </div>
       </div>
     </footer>

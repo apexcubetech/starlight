@@ -4,7 +4,7 @@ export const bookContent = {
   bookTitle: "My Philosophy of Cinema",
   bookTitleTamil: "சினிமாவைப் பற்றி நான் நம்புவது",
   author: "N. Sathaiah",
-  authorTamil: "ந. சாத்தையா",
+  authorTamil: "N. சாத்தையா",
   subtitle: "N. Sathaiah's Note — Starlight Reels",
   description:
     "This manuscript is presented in both Tamil and English. We invite you to begin in the language that feels most natural to you.",

@@ -5,8 +5,11 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { mainNavigation } from "@/lib/navigation";
+import { pickLocalized } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { MobileMenu } from "@/components/MobileMenu";
+import { useLanguage } from "@/components/LanguageProvider";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 type HeaderProps = {
   variant?: "overlay" | "solid";
@@ -14,6 +17,7 @@ type HeaderProps = {
 
 export function Header({ variant = "solid" }: HeaderProps) {
   const pathname = usePathname();
+  const { language } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [philosophyOpen, setPhilosophyOpen] = useState(false);
@@ -90,7 +94,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
                     )}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
-                    {item.label}
+                    {pickLocalized(item.label, item.labelTamil, language)}
                   </Link>
                   <div
                     className={cn(
@@ -112,7 +116,11 @@ export function Header({ variant = "solid" }: HeaderProps) {
                               : "text-muted hover:bg-gold-dim hover:text-foreground",
                           )}
                         >
-                          {child.label}
+                          {pickLocalized(
+                            child.label,
+                            child.labelTamil,
+                            language,
+                          )}
                         </Link>
                       ))}
                     </div>
@@ -130,11 +138,15 @@ export function Header({ variant = "solid" }: HeaderProps) {
                   )}
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
-                  {item.label}
+                  {pickLocalized(item.label, item.labelTamil, language)}
                 </Link>
               ),
             )}
           </nav>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <LanguageToggle compact />
+          </div>
 
           <button
             type="button"

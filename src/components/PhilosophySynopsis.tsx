@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { SynopsisItem } from "@/content/sathaiah-note";
 import { TamilText } from "@/components/TamilText";
+import { useLanguage } from "@/components/LanguageProvider";
+import { pickLocalized } from "@/lib/i18n";
 
 type Props = {
   items: SynopsisItem[];
@@ -19,10 +21,13 @@ function SynopsisLinks({
   activeId: string;
   onSelect: (id: string) => void;
 }) {
+  const { language, isTamil } = useLanguage();
+
   return (
     <ol className="space-y-1">
       {items.map((item) => {
         const isActive = activeId === item.id;
+        const label = pickLocalized(item.labelEn, item.labelTa, language);
         return (
           <li key={item.id}>
             <a
@@ -35,10 +40,13 @@ function SynopsisLinks({
                   : "border-transparent text-muted hover:border-gold/40 hover:text-foreground",
               )}
             >
-              <span className="block">{item.labelEn}</span>
-              <TamilText as="span" className="mt-0.5 block text-xs opacity-80">
-                {item.labelTa}
-              </TamilText>
+              {isTamil ? (
+                <TamilText as="span" className="block">
+                  {label}
+                </TamilText>
+              ) : (
+                <span className="block">{label}</span>
+              )}
             </a>
           </li>
         );

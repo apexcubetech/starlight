@@ -1,0 +1,182 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { homeContent } from "@/content/home";
+import { uiStrings } from "@/lib/navigation";
+import { pickLocalized } from "@/lib/i18n";
+import { useLanguage } from "@/components/LanguageProvider";
+import { Localized, LocalizedParagraphs } from "@/components/Localized";
+import { Section } from "@/components/ui/Section";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
+import { ChapterCarousel } from "@/components/ChapterCarousel";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { SathaiahPortrait } from "@/components/SathaiahPortrait";
+
+export function HomePageContent() {
+  const c = homeContent;
+  const { language } = useLanguage();
+
+  return (
+    <>
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-40" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-4 py-32 text-center sm:px-6 lg:px-8">
+          <div className="animate-fade-up mx-auto mb-10 inline-flex items-center justify-center">
+            <div className="corner-accent relative p-4">
+              <Image
+                src="/logo.png"
+                alt="Starlight Reels"
+                width={140}
+                height={140}
+                className="relative h-28 w-28 sm:h-36 sm:w-36"
+                priority
+              />
+            </div>
+          </div>
+
+          <Localized
+            en={c.hero.subtitle}
+            ta={c.hero.subtitleTamil}
+            as="p"
+            className="animate-fade-up kicker [animation-delay:100ms]"
+          />
+
+          <h1 className="animate-fade-up display-heading mt-6 text-5xl sm:text-7xl lg:text-8xl [animation-delay:200ms]">
+            <span className="text-shimmer">{c.hero.title}</span>
+          </h1>
+
+          <Localized
+            en={c.hero.tagline}
+            ta={c.hero.taglineTamil}
+            as="p"
+            className="animate-fade-up mx-auto mt-8 max-w-2xl text-xl font-bold text-foreground/90 [animation-delay:300ms]"
+          />
+
+          <Localized
+            en={c.hero.description}
+            ta={c.hero.descriptionTamil}
+            as="p"
+            className="animate-fade-up mx-auto mt-8 max-w-xl text-lg font-medium leading-relaxed text-muted [animation-delay:400ms]"
+          />
+
+          <div className="animate-fade-up mt-12 flex flex-wrap justify-center gap-4 [animation-delay:500ms]">
+            <Button href="/about">{uiStrings.aboutSathaiah[language]}</Button>
+            <Button href="/story-submission" variant="outline">
+              {uiStrings.submitDetails[language]}
+            </Button>
+            <WhatsAppButton />
+          </div>
+        </div>
+      </section>
+
+      <Section>
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
+          <div>
+            <SectionHeading
+              kicker={c.introduction.kicker}
+              kickerTamil={c.introduction.kickerTamil}
+              title={c.introduction.title}
+              titleTamil={c.introduction.titleTamil}
+            />
+            <LocalizedParagraphs
+              en={c.introduction.paragraphs}
+              ta={c.introduction.paragraphsTamil}
+              className="mt-8"
+            />
+          </div>
+          <SathaiahPortrait size="lg" className="mx-auto lg:mx-0" />
+        </div>
+      </Section>
+
+      <Section alt>
+        <blockquote className="quote-block mx-auto max-w-4xl text-center">
+          <Localized
+            en={c.philosophyHighlight.quote}
+            ta={c.philosophyHighlight.quoteTamil}
+            as="p"
+            className="text-2xl font-bold leading-snug text-foreground sm:text-4xl"
+          />
+        </blockquote>
+        <div className="mt-12 text-center">
+          <Link href="/philosophy" className="link-gold">
+            {uiStrings.explorePhilosophy[language]}
+          </Link>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          kicker={c.chapters.kicker}
+          kickerTamil={c.chapters.kickerTamil}
+          title={c.chapters.title}
+          titleTamil={c.chapters.titleTamil}
+        />
+        <ChapterCarousel />
+      </Section>
+
+      <Section alt>
+        <div className="grid gap-8 lg:grid-cols-2">
+          <Card static className="corner-accent border-gold/25">
+            <p className="kicker">Philosophy</p>
+            <Localized
+              en={c.bookHighlight.title}
+              ta={c.bookHighlight.titleTamil}
+              as="h2"
+              className="section-heading mt-4 text-2xl sm:text-3xl"
+            />
+            <Localized
+              en={c.bookHighlight.description}
+              ta={c.bookHighlight.descriptionTamil}
+              as="p"
+              className="text-body mt-5"
+            />
+            <Link href={c.bookHighlight.href} className="link-gold mt-6 inline-block">
+              {uiStrings.learnMore[language]}
+            </Link>
+          </Card>
+
+          <div className="space-y-6">
+            {[c.ctas.submitDetails, c.ctas.connect].map((cta) => (
+              <Card key={cta.href} href={cta.href}>
+                <Localized
+                  en={cta.title}
+                  ta={cta.titleTamil}
+                  as="h3"
+                  className="section-heading text-lg group-hover:text-gold-text transition-colors"
+                />
+                <Localized
+                  en={cta.description}
+                  ta={cta.descriptionTamil}
+                  as="p"
+                  className="text-body mt-3"
+                />
+                <span className="link-gold mt-4 inline-block text-sm">
+                  {uiStrings.learnMore[language]}
+                </span>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section alt>
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="gold-line mx-auto mb-10 w-24" />
+          <Localized
+            en={`"${c.closingQuote.text}"`}
+            ta={`"${c.closingQuote.textTamil}"`}
+            as="p"
+            className="text-2xl font-bold italic leading-relaxed text-foreground sm:text-3xl"
+          />
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <Button href="/contact">{uiStrings.getInTouch[language]}</Button>
+            <WhatsAppButton />
+          </div>
+        </div>
+      </Section>
+    </>
+  );
+}

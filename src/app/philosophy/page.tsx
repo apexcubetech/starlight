@@ -5,7 +5,7 @@ import { PhilosophyManuscript } from "@/components/PhilosophyManuscript";
 export const metadata: Metadata = {
   title: "Philosophy",
   description:
-    "N. Sathaiah's Note — My Philosophy of Cinema. Full manuscript in Tamil and English.",
+    "N. Sathaiah's Note - My Philosophy of Cinema. Full manuscript in Tamil and English.",
 };
 
 export default function PhilosophyPage() {

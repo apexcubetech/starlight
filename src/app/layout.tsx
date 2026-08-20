@@ -8,11 +8,12 @@ import { PageBackground } from "@/components/ui/PageBackground";
 import GoogleAnalytics, {
   AnalyticsScripts,
 } from "@/components/GoogleAnalytics";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} — ${siteConfig.personName}`,
+    default: `${siteConfig.name} - ${siteConfig.personName}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -56,10 +57,10 @@ export function SiteShell({
   headerVariant?: "overlay" | "solid";
 }) {
   return (
-    <>
+    <LanguageProvider>
       <Header variant={headerVariant} />
       <main className="relative flex-1">{children}</main>
       <Footer />
-    </>
+    </LanguageProvider>
   );
 }

@@ -37,16 +37,25 @@ export async function POST(request: NextRequest) {
 
     const name = sanitizeString(body.name, 120);
     const email = normalizeEmail(sanitizeString(body.email, 254));
-    const phone = sanitizeString(body.phone, 20) || undefined;
-    const storyTitle = sanitizeString(body.storyTitle, 200);
-    const synopsis = sanitizeString(body.synopsis, 10000);
-    const genre = sanitizeString(body.genre, 100);
+    const phone = sanitizeString(body.phone, 20);
+    const genre = sanitizeString(body.genre, 300);
+    const workExperience = sanitizeString(body.workExperience, 5000);
+    const consultReason = sanitizeString(body.consultReason, 5000);
+    const referralSource = sanitizeString(body.referralSource, 100);
     const additionalInfo =
       sanitizeString(body.additionalInfo, 5000) || undefined;
     const consent = body.consent === true;
     const captchaAnswer = sanitizeString(body.captchaAnswer, 10);
 
-    if (!name || !email || !storyTitle || !synopsis || !genre) {
+    if (
+      !name ||
+      !email ||
+      !phone ||
+      !genre ||
+      !workExperience ||
+      !consultReason ||
+      !referralSource
+    ) {
       return NextResponse.json(
         { success: false, message: "Please fill in all required fields." },
         { status: 400 },
@@ -94,16 +103,17 @@ export async function POST(request: NextRequest) {
       name,
       email,
       phone,
-      storyTitle,
-      synopsis,
       genre,
+      workExperience,
+      consultReason,
+      referralSource,
       additionalInfo,
       consent,
     });
 
     return NextResponse.json({
       success: true,
-      message: "Story submitted successfully.",
+      message: "Details submitted successfully.",
     });
   } catch (error) {
     console.error("Story submission error:", error);

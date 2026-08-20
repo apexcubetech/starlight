@@ -1,28 +1,20 @@
 export const contactContent = {
-  title: "Contact",
+  title: "Connect",
   titleTamil: "தொடர்பு",
-  subtitle: "Let's work together",
-  subtitleTamil: "ஒன்றாக வேலை செய்வோம்",
+  subtitle: "Reach Starlight Reels",
+  subtitleTamil: "ஸ்டார்லைட் ரீல்ஸைத் தொடர்பு கொள்ளுங்கள்",
   introduction:
-    "If your story has honesty, originality, and conviction — we would like to hear from you. Whether you wish to submit a story, inquire about script evaluation, or connect regarding collaboration, please reach out.",
+    "We welcome enquiries from storytellers and filmmakers who would like to consult with Starlight Reels.",
   introductionTamil:
-    "உங்கள் கதையில் நேர்மை, originality, conviction இருந்தால் — உங்களிடமிருந்து கேட்க விரும்புகிறோம்.",
-  note: "Contact details will be updated when officially provided. In the meantime, please use the Story Submission form or reach out through available channels.",
-  noteTamil: "தொடர்பு விவரங்கள் அதிகாரப்பூர்வமாக வழங்கப்படும்போது புதுப்பிக்கப்படும்.",
-  ctas: [
-    {
-      title: "Submit a Story",
-      titleTamil: "கதையை சமர்ப்பிக்கவும்",
-      description: "Share your original story for review and evaluation.",
-      href: "/story-submission",
-    },
-    {
-      title: "Script Evaluation",
-      titleTamil: "திரைக்கதை மதிப்பீடு",
-      description: "Learn about screenplay evaluation services.",
-      href: "/script-evaluation",
-    },
-  ],
+    "ஸ்டார்லைட் ரீல்ஸுடன் ஆலோசனை பெற விரும்பும் கதை சொல்லிகள் மற்றும் திரைப்படத் துறையினரின் விசாரணைகளை வரவேற்கிறோம்.",
+  whatsappNotice:
+    "All enquiries will be handled through WhatsApp messages only. Please do not call.",
+  whatsappNoticeTamil:
+    "அனைத்து விசாரணைகளும் வாட்ஸ்அப் செய்திகள் மூலமே கையாளப்படும். தயவுசெய்து அழைக்க வேண்டாம்.",
+  emailNote:
+    "You can also reach us by email. We will respond as soon as possible.",
+  emailNoteTamil:
+    "மின்னஞ்சல் மூலமும் எங்களைத் தொடர்பு கொள்ளலாம். விரைவில் பதிலளிப்போம்.",
   closingQuote: {
     text: "Let's work together.",
     textTamil: "ஒன்றாக வேலை செய்வோம்.",

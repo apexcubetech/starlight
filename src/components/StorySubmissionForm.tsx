@@ -4,12 +4,15 @@ import { useState } from "react";
 import { CaptchaField } from "@/components/CaptchaField";
 import { storySubmissionContent } from "@/content/story-submission";
 import { trackEvent } from "@/components/GoogleAnalytics";
-import { TamilText } from "@/components/TamilText";
+import { useLanguage } from "@/components/LanguageProvider";
+import { pickLocalized } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 export function StorySubmissionForm() {
+  const { language } = useLanguage();
+  const f = storySubmissionContent.form;
   const [formState, setFormState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [captchaAnswer, setCaptchaAnswer] = useState("");
@@ -50,10 +53,11 @@ export function StorySubmissionForm() {
         body: JSON.stringify({
           name: formData.get("name"),
           email: formData.get("email"),
-          phone: formData.get("phone") || undefined,
-          storyTitle: formData.get("storyTitle"),
-          synopsis: formData.get("synopsis"),
+          phone: formData.get("phone"),
           genre: formData.get("genre"),
+          workExperience: formData.get("workExperience"),
+          consultReason: formData.get("consultReason"),
+          referralSource: formData.get("referralSource"),
           additionalInfo: formData.get("additionalInfo") || undefined,
           consent: formData.get("consent") === "on",
           captchaAnswer: captchaAnswer.trim(),
@@ -86,29 +90,28 @@ export function StorySubmissionForm() {
     return (
       <div className="card-static corner-accent rounded-sm p-8 text-center">
         <p className="text-3xl font-bold text-gold-text">✓</p>
-        <h3 className="section-heading mt-4 text-xl">Thank You</h3>
-        <p className="text-body mt-3">
-          Your story has been submitted successfully. We will review it and be
-          in touch if appropriate.
-        </p>
-        <TamilText className="mt-3 text-sm">
-          உங்கள் கதை வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது.
-        </TamilText>
+        <p className="text-body mt-4">{f.success[language]}</p>
         <button
           type="button"
           onClick={() => setFormState("idle")}
           className="link-gold mt-6 text-sm"
         >
-          Submit another story
+          {language === "ta" ? "மீண்டும் சமர்ப்பிக்க" : "Submit again"}
         </button>
       </div>
     );
   }
 
+  const consent = pickLocalized(
+    storySubmissionContent.consentText,
+    storySubmissionContent.consentTextTamil,
+    language,
+  );
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field label="Name *" htmlFor="name">
+        <Field label={`${f.name[language]} *`} htmlFor="name">
           <input
             id="name"
             name="name"
@@ -118,7 +121,7 @@ export function StorySubmissionForm() {
             className={inputClass}
           />
         </Field>
-        <Field label="Email *" htmlFor="email">
+        <Field label={`${f.email[language]} *`} htmlFor="email">
           <input
             id="email"
             name="email"
@@ -131,49 +134,77 @@ export function StorySubmissionForm() {
         </Field>
       </div>
 
-      <Field label="Phone (optional)" htmlFor="phone">
+      <Field label={`${f.phone[language]} *`} htmlFor="phone">
         <input
           id="phone"
           name="phone"
           type="tel"
+          required
           maxLength={20}
           className={inputClass}
         />
       </Field>
 
-      <Field label="Story Title *" htmlFor="storyTitle">
+      <Field label={`${f.genre[language]} *`} htmlFor="genre">
         <input
-          id="storyTitle"
-          name="storyTitle"
+          id="genre"
+          name="genre"
           required
-          maxLength={200}
+          maxLength={300}
+          placeholder={f.genre.hint[language]}
           className={inputClass}
         />
       </Field>
 
-      <Field label="Story / Synopsis *" htmlFor="synopsis">
+      <Field label={`${f.workExperience[language]} *`} htmlFor="workExperience">
         <textarea
-          id="synopsis"
-          name="synopsis"
+          id="workExperience"
+          name="workExperience"
           required
-          rows={8}
-          maxLength={10000}
+          rows={5}
+          maxLength={5000}
+          placeholder={f.workExperience.hint[language]}
           className={cn(inputClass, "resize-y")}
         />
       </Field>
 
-      <Field label="Genre *" htmlFor="genre">
-        <select id="genre" name="genre" required className={inputClass}>
-          <option value="">Select genre</option>
-          {storySubmissionContent.genres.map((g) => (
-            <option key={g} value={g}>
-              {g}
-            </option>
-          ))}
-        </select>
+      <Field label={`${f.consultReason[language]} *`} htmlFor="consultReason">
+        <textarea
+          id="consultReason"
+          name="consultReason"
+          required
+          rows={5}
+          maxLength={5000}
+          className={cn(inputClass, "resize-y")}
+        />
       </Field>
 
-      <Field label="Additional Information (optional)" htmlFor="additionalInfo">
+      <fieldset>
+        <legend className="mb-3 block text-sm font-bold text-foreground/80">
+          {f.referral[language]} *
+        </legend>
+        <div className="space-y-2">
+          {storySubmissionContent.referralOptions.map((option) => (
+            <label
+              key={option.value}
+              className="flex items-center gap-3 text-sm text-muted"
+            >
+              <input
+                type="radio"
+                name="referralSource"
+                value={option.value}
+                required
+                className="accent-[var(--gold)]"
+              />
+              <span>
+                {pickLocalized(option.label, option.labelTamil, language)}
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <Field label={f.additionalInfo[language]} htmlFor="additionalInfo">
         <textarea
           id="additionalInfo"
           name="additionalInfo"
@@ -190,7 +221,7 @@ export function StorySubmissionForm() {
           required
           className="mt-1 accent-[var(--gold)]"
         />
-        <span>{storySubmissionContent.consentText}</span>
+        <span>{consent}</span>
       </label>
 
       <Field label="CAPTCHA *" htmlFor="captcha">
@@ -214,7 +245,7 @@ export function StorySubmissionForm() {
         disabled={formState === "submitting" || !captchaReady}
         className="cursor-pointer btn-gold w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
       >
-        {formState === "submitting" ? "Submitting..." : "Submit Story"}
+        {formState === "submitting" ? f.submitting[language] : f.submit[language]}
       </button>
     </form>
   );

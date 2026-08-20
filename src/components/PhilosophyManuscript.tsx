@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   sathaiahNoteContent,
   sathaiahSynopsis,
@@ -9,10 +8,8 @@ import {
 import { PageHero } from "@/components/PageHero";
 import { TamilText } from "@/components/TamilText";
 import { PhilosophySynopsis } from "@/components/PhilosophySynopsis";
-import {
-  PhilosophyLanguageToggle,
-  type ManuscriptLanguage,
-} from "@/components/PhilosophyLanguageToggle";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { SiteLanguage } from "@/lib/i18n";
 
 function SectionTitle({
   language,
@@ -20,7 +17,7 @@ function SectionTitle({
   titleEnSub,
   titleTa,
 }: Pick<SathaiahSection, "titleEn" | "titleEnSub" | "titleTa"> & {
-  language: ManuscriptLanguage;
+  language: SiteLanguage;
 }) {
   if (language === "ta") {
     return (
@@ -40,7 +37,7 @@ function SectionTitle({
   );
 }
 
-function ManuscriptContent({ language }: { language: ManuscriptLanguage }) {
+function ManuscriptContent({ language }: { language: SiteLanguage }) {
   const c = sathaiahNoteContent;
   const isTamil = language === "ta";
   const introParagraphs = isTamil ? c.introTa : c.introEn;
@@ -133,7 +130,7 @@ function ManuscriptContent({ language }: { language: ManuscriptLanguage }) {
 }
 
 export function PhilosophyManuscript() {
-  const [language, setLanguage] = useState<ManuscriptLanguage>("ta");
+  const { language } = useLanguage();
   const c = sathaiahNoteContent;
   const isTamil = language === "ta";
 
@@ -147,8 +144,6 @@ export function PhilosophyManuscript() {
 
       <section className="section-block relative py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <PhilosophyLanguageToggle language={language} onChange={setLanguage} />
-
           <div className="mt-10 lg:hidden">
             <PhilosophySynopsis items={sathaiahSynopsis} collapsible />
           </div>
