@@ -24,6 +24,20 @@ export const homeContent = {
       "இங்கு காண்பது திரைப்படத்திற்கான விதிகள் அல்ல. ஒரு பார்வையாளனின் அனுபவம், ஒரு கதை கேட்பவனின் குறிப்புகள், அடுத்த நல்ல கதை சொல்லியைத் தேடும் ஒருவரின் சிந்தனைகள்.",
     ],
   },
+  dinesh: {
+    title: "About Dinesh",
+    titleTamil: "தினேஷ் பற்றி",
+    kicker: "Starlight Reels",
+    kickerTamil: "ஸ்டார்லைட் ரீல்ஸ்",
+    paragraphs: [
+      "Dinesh's contribution to the creation of Starlight Reels has been significant. He was the one who brought structure and organization to work that had been carried out individually over many years. From creating an identity for this initiative, including the name \"Starlight Reels\" to bringing together the people who helped turn it into a functioning platform, his role has been essential.",
+      "Over the years, his keen eye and ability to listen carefully have been an important part of this journey. Remembering even the smallest details mentioned years ago, and noticing them precisely when they appear on screen in a film, has always been a distinctive part of his perspective.",
+    ],
+    paragraphsTamil: [
+      "ஸ்டார்லைட் ரீல்ஸ் உருவாகியதில் தினேஷின் பங்களிப்பு முக்கியமானது. பல ஆண்டுகளாக தனிப்பட்ட முறையில் தொடர்ந்து வந்த இந்தப் பணிக்கு ஒரு கட்டமைப்பையும் ஒழுங்கையும் கொண்டு வந்தவர் அவர். 'Starlight Reels' என்ற பெயர் உட்பட, இந்த முயற்சிக்கு ஒரு அடையாளத்தை உருவாக்கியதிலும், இதை ஒரு செயல்படும் தளமாக உருவாக்க உதவியவர்களை ஒன்றிணைத்ததிலும் அவரது பங்கு முக்கியமானது.",
+      "பல ஆண்டுகளாக, அவருடைய கூர்மையான கவனமும், கவனமாகக் கேட்கும் தன்மையும் இந்தப் பயணத்தில் முக்கியமானதாக இருந்திருக்கிறது. பல வருடங்களுக்கு முன்பு சொல்லப்பட்ட சிறிய விஷயங்களைக்கூட நினைவில் வைத்துக்கொண்டு, அவை ஒரு படத்தில் திரையில் தோன்றும்போது அதைத் துல்லியமாகக் கவனிப்பது — அவருடைய தனித்துவமான பார்வையின் ஒரு பகுதியாகவே இருந்து வருகிறது.",
+    ],
+  },
   philosophyHighlight: {
     title: "Our Philosophy",
     titleTamil: "எங்கள் தத்துவம்",

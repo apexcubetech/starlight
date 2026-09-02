@@ -5,7 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AboutTimeline } from "@/components/AboutTimeline";
-import { Localized } from "@/components/Localized";
+import { Localized, LocalizedParagraphs } from "@/components/Localized";
 import { SathaiahPortrait } from "@/components/SathaiahPortrait";
 import { QuoteBlock } from "@/components/QuoteBlock";
 
@@ -47,6 +47,22 @@ export function AboutPageContent() {
       </Section>
 
       <Section>
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading
+            kicker={c.dinesh.kicker}
+            kickerTamil={c.dinesh.kickerTamil}
+            title={c.dinesh.title}
+            titleTamil={c.dinesh.titleTamil}
+          />
+          <LocalizedParagraphs
+            en={c.dinesh.paragraphs}
+            ta={c.dinesh.paragraphsTamil}
+            className="mt-8"
+          />
+        </div>
+      </Section>
+
+      <Section alt>
         <div className="mx-auto max-w-3xl space-y-16">
           {c.sections.map((section) => (
             <article key={section.title}>

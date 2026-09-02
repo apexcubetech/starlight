@@ -34,14 +34,6 @@ export const aboutContent = {
         "அவருக்கு சில திரைப்படங்கள் திரைக்கதை எப்படி இருக்க வேண்டும் என்பதைக் கற்றுக்கொடுத்தன. சில ஒரு காட்சியின் வலிமையை உணர்த்தின. சில சரியான நடிகர் தேர்வு ஒரு கதையை எவ்வளவு உயரத்திற்கு எடுத்துச் செல்ல முடியும் என்பதைக் காட்டின. சில ஒரு சிறிய அலட்சியம் எவ்வளவு பெரிய வாய்ப்பைத் தவறவிடும் என்பதையும் நினைவூட்டின. இவை கற்பனைக் கொள்கைகள் அல்ல: 500-க்கும் மேற்பட்ட கதைகளிலும் நூற்றுக்கணக்கான திரைப்படங்களிலும் அவர் கற்றெடுத்த பாடங்கள்.",
     },
     {
-      title: "Behind Starlight Reels",
-      titleTamil: "ஸ்டார்லைட் ரீல்ஸ் பின்னால்",
-      content:
-        "Starlight Reels took shape with the important contribution of my friend Dinesh, who helped bring structure and discipline to a body of work that had been carried out independently for many years. He was instrumental in giving the initiative its identity, including the name Starlight Reels, and in bringing together the people who helped turn the idea into a functioning platform. Over the years, his keen eye and attentive listening have also been an important part of their collaboration; remembering even the smallest observations shared years ago and recognising them when they appear on screen.",
-      contentTamil:
-        "பல ஆண்டுகளாகத் தனியாக நடத்தப்பட்ட வேலைக்கு அமைப்பும் ஒழுக்கமும் தேவைப்பட்ட போது, என் நண்பர் தினேஷ் ஸ்டார்லைட் ரீல்ஸ் உருவாக முக்கிய பங்கு வகித்தார். Starlight Reels என்ற பெயர் உட்பட, இந்த முயற்சிக்கு அடையாளம் கொடுத்தார்; கருத்தை செயலூக்கமான தளமாக மாற்ற உதவிய மக்களை ஒன்றிணைத்தார். ஆண்டுகளாக, அவரது கூர்மையான பார்வையும் கவனமான கேட்பும் எங்கள் இணைப்பின் முக்கியப் பகுதியாக இருந்துள்ளது: பல ஆண்டுகளுக்கு முன் பகிரப்பட்ட சிறிய குறிப்புகளையும் நினைவில் வைத்து, திரையில் தோன்றும்போது அடையாளம் காண்பது.",
-    },
-    {
       title: "Starlight Reels",
       titleTamil: "ஸ்டார்லைட் ரீல்ஸ்",
       content:
@@ -50,6 +42,20 @@ export const aboutContent = {
         "ஸ்டார்லைட் ரீல்ஸ் கதை சொல்லிகளைக் கண்டறிந்து, வளர்த்தெடுத்து, உயர்த்த இருக்கிறது. உலகம் அவர்களை அறிவதற்கு முன், அந்த கதை சொல்லியை அடையாளம் காண்பதே எங்கள் பங்கு. கதைக்கு அப்பால்: கதை சொல்லியைப் பார்க்கிறோம்.",
     },
   ],
+  dinesh: {
+    title: "About Dinesh",
+    titleTamil: "தினேஷ் பற்றி",
+    kicker: "Starlight Reels",
+    kickerTamil: "ஸ்டார்லைட் ரீல்ஸ்",
+    paragraphs: [
+      "Dinesh's contribution to the creation of Starlight Reels has been significant. He was the one who brought structure and organization to work that had been carried out individually over many years. From creating an identity for this initiative, including the name \"Starlight Reels\" to bringing together the people who helped turn it into a functioning platform, his role has been essential.",
+      "Over the years, his keen eye and ability to listen carefully have been an important part of this journey. Remembering even the smallest details mentioned years ago, and noticing them precisely when they appear on screen in a film, has always been a distinctive part of his perspective.",
+    ],
+    paragraphsTamil: [
+      "ஸ்டார்லைட் ரீல்ஸ் உருவாகியதில் தினேஷின் பங்களிப்பு முக்கியமானது. பல ஆண்டுகளாக தனிப்பட்ட முறையில் தொடர்ந்து வந்த இந்தப் பணிக்கு ஒரு கட்டமைப்பையும் ஒழுங்கையும் கொண்டு வந்தவர் அவர். 'Starlight Reels' என்ற பெயர் உட்பட, இந்த முயற்சிக்கு ஒரு அடையாளத்தை உருவாக்கியதிலும், இதை ஒரு செயல்படும் தளமாக உருவாக்க உதவியவர்களை ஒன்றிணைத்ததிலும் அவரது பங்கு முக்கியமானது.",
+      "பல ஆண்டுகளாக, அவருடைய கூர்மையான கவனமும், கவனமாகக் கேட்கும் தன்மையும் இந்தப் பயணத்தில் முக்கியமானதாக இருந்திருக்கிறது. பல வருடங்களுக்கு முன்பு சொல்லப்பட்ட சிறிய விஷயங்களைக்கூட நினைவில் வைத்துக்கொண்டு, அவை ஒரு படத்தில் திரையில் தோன்றும்போது அதைத் துல்லியமாகக் கவனிப்பது — அவருடைய தனித்துவமான பார்வையின் ஒரு பகுதியாகவே இருந்து வருகிறது.",
+    ],
+  },
   timeline: [
     {
       label: "Story Listening",

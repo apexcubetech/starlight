@@ -81,6 +81,22 @@ export function HomePageContent() {
         </div>
       </Section>
 
+      <Section>
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading
+            kicker={c.dinesh.kicker}
+            kickerTamil={c.dinesh.kickerTamil}
+            title={c.dinesh.title}
+            titleTamil={c.dinesh.titleTamil}
+          />
+          <LocalizedParagraphs
+            en={c.dinesh.paragraphs}
+            ta={c.dinesh.paragraphsTamil}
+            className="mt-8"
+          />
+        </div>
+      </Section>
+
       <Section alt>
         <QuoteBlock
           en={c.philosophyHighlight.quote}
