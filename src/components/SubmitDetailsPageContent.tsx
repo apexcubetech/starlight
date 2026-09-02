@@ -46,7 +46,7 @@ export function SubmitDetailsPageContent() {
             </ul>
           </div>
 
-          <Card static className="corner-accent p-6 sm:p-8">
+          <Card static className="p-6 sm:p-8">
             <StorySubmissionForm />
           </Card>
         </div>

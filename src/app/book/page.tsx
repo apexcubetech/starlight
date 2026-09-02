@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { SiteShell } from "../layout";
 import { bookContent } from "@/content/book";
 import { PageHero } from "@/components/PageHero";
@@ -7,6 +6,8 @@ import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { TamilText } from "@/components/TamilText";
+import { LogoMark } from "@/components/LogoMark";
+import { QuoteBlock } from "@/components/QuoteBlock";
 
 export const metadata: Metadata = {
   title: "The Book",
@@ -24,14 +25,8 @@ export default function BookPage() {
       <Section>
         <div className="grid gap-16 lg:grid-cols-[320px_1fr]">
           <div className="flex flex-col items-center lg:items-start">
-            <Card static className="corner-accent relative aspect-[3/4] w-full max-w-[300px] overflow-hidden p-0">
-              <Image
-                src="/logo.png"
-                alt="My Philosophy of Cinema"
-                fill
-                className="object-contain p-10"
-                sizes="300px"
-              />
+            <Card static className="relative flex aspect-[3/4] w-full max-w-[300px] items-center justify-center overflow-hidden p-0">
+              <LogoMark size="lg" />
             </Card>
             <p className="mt-5 text-center text-sm font-semibold text-muted lg:text-left">
               {c.subtitle}
@@ -80,10 +75,14 @@ export default function BookPage() {
 
             <div className="mt-12 space-y-8">
               {c.excerpts.map((excerpt) => (
-                <blockquote key={excerpt.quote.slice(0, 30)} className="quote-block">
-                  <p className="text-lg font-bold italic text-foreground">{excerpt.quote}</p>
-                  <TamilText className="mt-3 text-sm">{excerpt.quoteTamil}</TamilText>
-                </blockquote>
+                <QuoteBlock
+                  key={excerpt.quote.slice(0, 30)}
+                  en={excerpt.quote}
+                  ta={excerpt.quoteTamil}
+                  align="left"
+                  italic
+                  showGoldLine={false}
+                />
               ))}
             </div>
 

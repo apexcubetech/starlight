@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
 import { mainNavigation, siteConfig, uiStrings } from "@/lib/navigation";
 import { pickLocalized } from "@/lib/i18n";
 import { useLanguage } from "@/components/LanguageProvider";
+import { LogoMark } from "@/components/LogoMark";
 
 export function Footer() {
   const { language } = useLanguage();
@@ -18,18 +18,11 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-border bg-surface/80 backdrop-blur-sm">
-      <div className="absolute inset-0 grid-bg opacity-20" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 justify-items-start md:justify-items-between">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3">
-              <Image
-                src="/logo.png"
-                alt="Starlight Reels"
-                width={52}
-                height={52}
-                className="h-13 w-13"
-              />
+              <LogoMark size="md" />
               <span className="text-sm font-bold tracking-[0.2em] text-gold-text uppercase">
                 Starlight Reels
               </span>

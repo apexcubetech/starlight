@@ -5,9 +5,9 @@
   --foreground: #faf7f0;
   --muted: #b8ad9a;
   --gold: #d4af37;
-  --gold-text: #ecc84a;
-  --gold-text-soft: #f2d878;
-  --gold-bright: #f5dc78;
+  --gold-text: #d9b84a;
+  --gold-text-soft: #e4c96a;
+  --gold-bright: #ebd878;
   --gold-muted: #9a7b2e;
   --gold-dim: rgba(212, 175, 55, 0.12);
   --surface: #0a0a0a;
@@ -16,6 +16,7 @@
   --border: rgba(212, 175, 55, 0.18);
   --border-strong: rgba(212, 175, 55, 0.35);
   --grid-line: rgba(212, 175, 55, 0.06);
+  --radius-ui: 0.75rem;
 }
 
 @theme inline {
@@ -95,6 +96,8 @@ body {
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
+  background-attachment: fixed;
+  background-position: center top;
 }
 
 .noise-overlay {
@@ -209,6 +212,7 @@ body {
 
 .card-modern {
   position: relative;
+  border-radius: var(--radius-ui);
   background: var(--surface-card);
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
@@ -249,9 +253,16 @@ body {
 
 .card-static {
   position: relative;
+  border-radius: var(--radius-ui);
   background: var(--surface-card);
   border: 1px solid var(--border);
   backdrop-filter: blur(8px);
+}
+
+.ui-selected {
+  border-color: var(--gold) !important;
+  background: var(--gold-dim) !important;
+  color: var(--gold-text);
 }
 
 .section-block {
@@ -285,6 +296,7 @@ body {
   color: var(--background);
   background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-muted) 100%);
   border: none;
+  border-radius: 0;
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
   box-shadow: 0 4px 24px rgba(212, 175, 55, 0.25);
 }
@@ -308,6 +320,7 @@ body {
   color: var(--gold);
   background: transparent;
   border: 1px solid var(--border-strong);
+  border-radius: 0;
   transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
@@ -329,57 +342,13 @@ body {
   text-decoration: underline;
 }
 
-/* ── Quote block ── */
+/* ── Quote block (legacy; prefer QuoteBlock component) ── */
 
 .quote-block {
   position: relative;
   padding-left: 1.5rem;
   border-left: 3px solid var(--gold);
 }
-
-.quote-block::before {
-  content: "\201C";
-  position: absolute;
-  top: -0.5rem;
-  left: -0.25rem;
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--gold);
-  opacity: 0.2;
-}
-
-/* ── Corner accents ── */
-
-.corner-accent {
-  position: relative;
-}
-
-.corner-accent::before,
-.corner-accent::after {
-  content: "";
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: var(--gold-muted);
-  border-style: solid;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.corner-accent::before {
-  top: 0;
-  left: 0;
-  border-width: 1px 0 0 1px;
-}
-
-.corner-accent::after {
-  bottom: 0;
-  right: 0;
-  border-width: 0 1px 1px 0;
-}
-
-/* ── Number badge ── */
 
 .num-badge {
   display: inline-flex;
@@ -392,7 +361,12 @@ body {
   letter-spacing: 0.05em;
   color: var(--gold-text);
   border: 1px solid var(--border-strong);
+  border-radius: var(--radius-ui);
   background: rgba(212, 175, 55, 0.06);
+}
+
+.input-ui {
+  border-radius: var(--radius-ui);
 }
 
 /* ── Animations ── */
@@ -424,16 +398,16 @@ body {
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    var(--gold-text) 0%,
+    var(--gold) 0%,
     var(--gold-bright) 40%,
     var(--gold-text-soft) 60%,
-    var(--gold-text) 100%
+    var(--gold) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
+  animation: shimmer 10s linear infinite;
 }
 
 @keyframes drawer-in {
@@ -473,5 +447,6 @@ body {
 }
 
 .pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
+  animation: pulse-glow 8s ease-in-out infinite;
+  opacity: 0.35;
 }

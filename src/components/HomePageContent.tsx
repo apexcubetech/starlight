@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { homeContent } from "@/content/home";
 import { uiStrings } from "@/lib/navigation";
-import { pickLocalized } from "@/lib/i18n";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Localized, LocalizedParagraphs } from "@/components/Localized";
 import { Section } from "@/components/ui/Section";
@@ -14,6 +12,8 @@ import { Button } from "@/components/ui/Button";
 import { ChapterCarousel } from "@/components/ChapterCarousel";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SathaiahPortrait } from "@/components/SathaiahPortrait";
+import { LogoMark } from "@/components/LogoMark";
+import { QuoteBlock } from "@/components/QuoteBlock";
 
 export function HomePageContent() {
   const c = homeContent;
@@ -22,19 +22,9 @@ export function HomePageContent() {
   return (
     <>
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-40" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl px-4 py-32 text-center sm:px-6 lg:px-8">
           <div className="animate-fade-up mx-auto mb-10 inline-flex items-center justify-center">
-            <div className="corner-accent relative p-4">
-              <Image
-                src="/logo.png"
-                alt="Starlight Reels"
-                width={140}
-                height={140}
-                className="relative h-28 w-28 sm:h-36 sm:w-36"
-                priority
-              />
-            </div>
+            <LogoMark size="hero" priority />
           </div>
 
           <Localized
@@ -49,17 +39,17 @@ export function HomePageContent() {
           </h1>
 
           <Localized
-            en={c.hero.tagline}
-            ta={c.hero.taglineTamil}
-            as="p"
-            className="animate-fade-up mx-auto mt-8 max-w-2xl text-xl font-bold text-foreground/90 [animation-delay:300ms]"
-          />
-
-          <Localized
             en={c.hero.description}
             ta={c.hero.descriptionTamil}
             as="p"
-            className="animate-fade-up mx-auto mt-8 max-w-xl text-lg font-medium leading-relaxed text-muted [animation-delay:400ms]"
+            className="animate-fade-up mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-muted [animation-delay:300ms]"
+          />
+
+          <Localized
+            en={c.hero.tagline}
+            ta={c.hero.taglineTamil}
+            as="p"
+            className="animate-fade-up mx-auto mt-6 max-w-xl text-base font-semibold text-foreground/80 [animation-delay:400ms]"
           />
 
           <div className="animate-fade-up mt-12 flex flex-wrap justify-center gap-4 [animation-delay:500ms]">
@@ -92,14 +82,11 @@ export function HomePageContent() {
       </Section>
 
       <Section alt>
-        <blockquote className="quote-block mx-auto max-w-4xl text-center">
-          <Localized
-            en={c.philosophyHighlight.quote}
-            ta={c.philosophyHighlight.quoteTamil}
-            as="p"
-            className="text-2xl font-bold leading-snug text-foreground sm:text-4xl"
-          />
-        </blockquote>
+        <QuoteBlock
+          en={c.philosophyHighlight.quote}
+          ta={c.philosophyHighlight.quoteTamil}
+          align="center"
+        />
         <div className="mt-12 text-center">
           <Link href="/philosophy" className="link-gold">
             {uiStrings.explorePhilosophy[language]}
@@ -107,40 +94,30 @@ export function HomePageContent() {
         </div>
       </Section>
 
-      <Section>
-        <SectionHeading
-          kicker={c.chapters.kicker}
-          kickerTamil={c.chapters.kickerTamil}
-          title={c.chapters.title}
-          titleTamil={c.chapters.titleTamil}
-        />
-        <ChapterCarousel />
-      </Section>
-
       <Section alt>
-        <div className="grid gap-8 lg:grid-cols-2">
-          <Card static className="corner-accent border-gold/25">
-            <p className="kicker">Philosophy</p>
-            <Localized
-              en={c.bookHighlight.title}
-              ta={c.bookHighlight.titleTamil}
-              as="h2"
-              className="section-heading mt-4 text-2xl sm:text-3xl"
-            />
-            <Localized
-              en={c.bookHighlight.description}
-              ta={c.bookHighlight.descriptionTamil}
-              as="p"
-              className="text-body mt-5"
-            />
-            <Link href={c.bookHighlight.href} className="link-gold mt-6 inline-block">
-              {uiStrings.learnMore[language]}
-            </Link>
-          </Card>
+        <div className="card-static border-gold/20 p-8 sm:p-10 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-3 lg:gap-10">
+            <Card static className="border-gold/25 bg-surface/60 lg:col-span-1">
+              <p className="kicker">Philosophy</p>
+              <Localized
+                en={c.bookHighlight.title}
+                ta={c.bookHighlight.titleTamil}
+                as="h2"
+                className="section-heading mt-4 text-2xl sm:text-3xl"
+              />
+              <Localized
+                en={c.bookHighlight.description}
+                ta={c.bookHighlight.descriptionTamil}
+                as="p"
+                className="text-body mt-5"
+              />
+              <Link href={c.bookHighlight.href} className="link-gold mt-6 inline-block">
+                {uiStrings.learnMore[language]}
+              </Link>
+            </Card>
 
-          <div className="space-y-6">
             {[c.ctas.submitDetails, c.ctas.connect].map((cta) => (
-              <Card key={cta.href} href={cta.href}>
+              <Card key={cta.href} href={cta.href} className="flex flex-col">
                 <Localized
                   en={cta.title}
                   ta={cta.titleTamil}
@@ -151,9 +128,9 @@ export function HomePageContent() {
                   en={cta.description}
                   ta={cta.descriptionTamil}
                   as="p"
-                  className="text-body mt-3"
+                  className="text-body mt-3 flex-1"
                 />
-                <span className="link-gold mt-4 inline-block text-sm">
+                <span className="link-gold mt-6 inline-block text-sm">
                   {uiStrings.learnMore[language]}
                 </span>
               </Card>
@@ -162,19 +139,34 @@ export function HomePageContent() {
         </div>
       </Section>
 
+      <Section>
+        <QuoteBlock
+          en={c.closingQuote.text}
+          ta={c.closingQuote.textTamil}
+          align="center"
+          italic
+        />
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
+          <Button href="/contact">{uiStrings.getInTouch[language]}</Button>
+          <WhatsAppButton />
+        </div>
+      </Section>
+
       <Section alt>
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="gold-line mx-auto mb-10 w-24" />
-          <Localized
-            en={`"${c.closingQuote.text}"`}
-            ta={`"${c.closingQuote.textTamil}"`}
-            as="p"
-            className="text-2xl font-bold italic leading-relaxed text-foreground sm:text-3xl"
-          />
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <Button href="/contact">{uiStrings.getInTouch[language]}</Button>
-            <WhatsAppButton />
-          </div>
+        <SectionHeading
+          kicker={c.chapters.kicker}
+          kickerTamil={c.chapters.kickerTamil}
+          title={c.chapters.title}
+          titleTamil={c.chapters.titleTamil}
+        />
+        <Localized
+          en={c.chapters.description}
+          ta={c.chapters.descriptionTamil}
+          as="p"
+          className="text-body mx-auto mt-6 max-w-3xl text-center"
+        />
+        <div className="mt-10">
+          <ChapterCarousel />
         </div>
       </Section>
     </>

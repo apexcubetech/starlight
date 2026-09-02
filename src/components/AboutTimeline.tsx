@@ -31,7 +31,7 @@ export function AboutTimeline({ items }: Props) {
             type="button"
             onClick={() => setActiveIndex(index)}
             className={cn(
-              "shrink-0 snap-start rounded-sm border px-4 py-3 text-left transition-colors",
+              "shrink-0 snap-start rounded-[var(--radius-ui)] border px-4 py-3 text-left transition-colors",
               index === activeIndex
                 ? "border-gold bg-gold-dim text-gold-text"
                 : "border-border text-muted hover:border-border-strong hover:text-foreground",
@@ -45,7 +45,7 @@ export function AboutTimeline({ items }: Props) {
         ))}
       </div>
 
-      <div className="card-static corner-accent mt-6 rounded-sm p-6 sm:p-8">
+      <div className="card-static mt-6 p-6 sm:p-8">
         {isTamil ? (
           <>
             <TamilText as="h3" className="section-heading text-xl">

@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
+import { uiStrings } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -18,6 +20,7 @@ export function CaptchaField({
   resetKey = 0,
   inputClassName,
 }: Props) {
+  const { language } = useLanguage();
   const [svg, setSvg] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -56,11 +59,13 @@ export function CaptchaField({
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-3">
         <div
-          className="flex min-h-[50px] min-w-[150px] items-center justify-center overflow-hidden rounded-sm border border-border-strong bg-white px-2 py-1"
+          className="input-ui flex min-h-[50px] min-w-[150px] items-center justify-center overflow-hidden border border-border-strong bg-background/80 px-2 py-1 [&_svg]:brightness-110 [&_svg]:contrast-125"
           aria-hidden={loading || !svg}
         >
           {loading ? (
-            <span className="text-xs font-semibold text-neutral-600">Loading…</span>
+            <span className="text-xs font-semibold text-muted">
+              {uiStrings.captchaLoading[language]}
+            </span>
           ) : svg ? (
             <div
               className="[&_svg]:h-[50px] [&_svg]:w-auto"
@@ -74,7 +79,7 @@ export function CaptchaField({
           disabled={loading}
           className="text-sm font-semibold text-gold-text transition-colors hover:text-gold-bright disabled:opacity-50"
         >
-          Refresh
+          {uiStrings.captchaRefresh[language]}
         </button>
       </div>
 
@@ -90,9 +95,9 @@ export function CaptchaField({
         maxLength={10}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Enter the characters shown"
-        className={cn(inputClassName, "uppercase tracking-widest")}
-        aria-label="CAPTCHA answer"
+        placeholder={uiStrings.captchaPlaceholder[language]}
+        className={cn(inputClassName, "input-ui uppercase tracking-widest")}
+        aria-label={uiStrings.captchaLabel[language]}
       />
 
       {error && (

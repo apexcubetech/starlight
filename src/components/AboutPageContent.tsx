@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AboutTimeline } from "@/components/AboutTimeline";
 import { Localized } from "@/components/Localized";
 import { SathaiahPortrait } from "@/components/SathaiahPortrait";
+import { QuoteBlock } from "@/components/QuoteBlock";
 
 export function AboutPageContent() {
   const c = aboutContent;
@@ -24,14 +25,14 @@ export function AboutPageContent() {
       <Section>
         <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[auto_1fr] lg:gap-14">
           <SathaiahPortrait size="lg" priority className="mx-auto lg:mx-0" />
-          <blockquote className="quote-block">
-            <Localized
-              en={`"${c.pullQuote.text}"`}
-              ta={`"${c.pullQuote.textTamil}"`}
-              as="p"
-              className="text-xl font-bold italic leading-relaxed text-foreground sm:text-2xl"
-            />
-          </blockquote>
+          <QuoteBlock
+            en={c.pullQuote.text}
+            ta={c.pullQuote.textTamil}
+            align="left"
+            italic
+            showGoldLine={false}
+            className="max-w-none"
+          />
         </div>
       </Section>
 

@@ -57,9 +57,10 @@ export function ChapterCarousel() {
           className="flex transition-transform duration-300 ease-out"
           style={{ transform: `translateX(-${index * slideWidth}%)` }}
         >
-          {chapters.map((chapter) => {
+          {chapters.map((chapter, chapterIndex) => {
             const title = pickLocalized(chapter.titleEn, chapter.titleTa, language);
             const label = `${uiStrings.chapter[language]} ${String(chapter.number).padStart(2, "0")}`;
+            const isActive = chapterIndex === index;
 
             return (
               <div
@@ -69,7 +70,10 @@ export function ChapterCarousel() {
               >
                 <Link
                   href={`/philosophy#${chapter.id}`}
-                  className="card-modern corner-accent flex h-full min-h-[220px] flex-col rounded-sm p-6"
+                  className={cn(
+                    "card-modern flex h-full min-h-[220px] flex-col p-6 transition-colors",
+                    isActive && "ui-selected",
+                  )}
                 >
                   <span className="kicker">{label}</span>
                   {isTamil ? (
@@ -96,7 +100,7 @@ export function ChapterCarousel() {
           disabled={index === 0}
           aria-label={uiStrings.carouselPrevious[language]}
           className={cn(
-            "inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border transition-colors",
+            "inline-flex h-10 w-10 items-center justify-center rounded-[var(--radius-ui)] border border-border transition-colors",
             index === 0
               ? "cursor-not-allowed text-muted/40"
               : "text-gold-text hover:border-gold/40 hover:bg-gold-dim",
@@ -130,7 +134,7 @@ export function ChapterCarousel() {
           disabled={index >= maxIndex}
           aria-label={uiStrings.carouselNext[language]}
           className={cn(
-            "inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border transition-colors",
+            "inline-flex h-10 w-10 items-center justify-center rounded-[var(--radius-ui)] border border-border transition-colors",
             index >= maxIndex
               ? "cursor-not-allowed text-muted/40"
               : "text-gold-text hover:border-gold/40 hover:bg-gold-dim",

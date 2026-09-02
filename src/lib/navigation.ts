@@ -28,7 +28,7 @@ export const siteConfig = {
   tagline: "Tamil cinema • criticism • stories • ideas • writing",
   taglineTamil: "தமிழ் சினிமா • விமர்சனம் • கதைகள் • சிந்தனைகள் • எழுத்து",
   description:
-    "Official website of N. Sathaiah. Tamil Film Critic, story listener, and discoverer of storytellers.",
+    "Official Website of N. Sathaiah. Tamil Film Critic, Story Listener and Discoverer of Storytellers.",
   descriptionTamil:
     "N. சாத்தையாவின் அதிகாரப்பூர்வ வலைத்தளம். தமிழ் திரைப்பட விமர்சகர், கதை கேட்பவர், கதை சொல்லிகளைக் கண்டறிபவர்.",
   footerRole: "Tamil Film Critic",
@@ -69,5 +69,16 @@ export const uiStrings = {
   copyright: {
     en: "© {year} Starlight Reels. N. Sathaiah. All rights reserved.",
     ta: "© {year} Starlight Reels. N. Sathaiah. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+  },
+  captchaLabel: { en: "CAPTCHA", ta: "CAPTCHA" },
+  captchaPlaceholder: {
+    en: "Enter the characters shown",
+    ta: "காட்டப்படும் எழுத்துகளை உள்ளிடவும்",
+  },
+  captchaLoading: { en: "Loading…", ta: "ஏற்றுகிறது…" },
+  captchaRefresh: { en: "Refresh", ta: "புதுப்பிக்க" },
+  captchaRequired: {
+    en: "Please enter the CAPTCHA characters.",
+    ta: "CAPTCHA எழுத்துகளை உள்ளிடவும்.",
   },
 };

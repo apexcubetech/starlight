@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { mainNavigation } from "@/lib/navigation";
@@ -10,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { MobileMenu } from "@/components/MobileMenu";
 import { useLanguage } from "@/components/LanguageProvider";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { LogoMark } from "@/components/LogoMark";
 
 type HeaderProps = {
   variant?: "overlay" | "solid";
@@ -56,18 +56,8 @@ export function Header({ variant = "solid" }: HeaderProps) {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[4.5rem] sm:px-6 lg:px-8">
           <Link href="/" className="group flex items-center gap-3">
-            <div className="relative">
-              <div className="absolute -inset-1 rounded-full bg-gold/20 opacity-0 blur-md transition-opacity group-hover:opacity-100" />
-              <Image
-                src="/logo.png"
-                alt="Starlight Reels"
-                width={44}
-                height={44}
-                className="relative h-10 w-10 transition-transform duration-300 group-hover:scale-105 sm:h-11 sm:w-11"
-                priority
-              />
-            </div>
-            <span className="hidden text-sm font-bold tracking-[0.22em] text-gold-text uppercase sm:block">
+            <LogoMark size="sm" priority className="transition-transform duration-300 group-hover:scale-105" />
+            <span className="hidden text-sm font-bold tracking-[0.2em] text-gold-text uppercase sm:block">
               Starlight Reels
             </span>
           </Link>
@@ -87,7 +77,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
                   <Link
                     href={item.href}
                     className={cn(
-                      "rounded-sm px-3 py-2 text-sm font-semibold transition-colors",
+                      "rounded-[var(--radius-ui)] px-3 py-2 text-sm font-semibold transition-colors",
                       isActive(item.href)
                         ? "text-gold-bright"
                         : "text-muted hover:text-foreground",
@@ -104,7 +94,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
                         : "pointer-events-none -translate-y-1 opacity-0",
                     )}
                   >
-                    <div className="card-static rounded-sm py-2 shadow-2xl">
+                    <div className="card-static py-2 shadow-2xl">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
@@ -131,7 +121,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-sm px-3 py-2 text-sm font-semibold transition-colors",
+                    "rounded-[var(--radius-ui)] px-3 py-2 text-sm font-semibold transition-colors",
                     isActive(item.href)
                       ? "text-gold-bright"
                       : "text-muted hover:text-foreground",
@@ -150,7 +140,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
 
           <button
             type="button"
-            className="relative z-10 flex h-10 w-10 touch-manipulation flex-col items-center justify-center gap-1.5 rounded-sm border border-border-strong bg-surface/80 lg:hidden"
+            className="relative z-10 flex h-10 w-10 touch-manipulation flex-col items-center justify-center gap-1.5 rounded-[var(--radius-ui)] border border-border-strong bg-surface/80 lg:hidden"
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
             aria-expanded={menuOpen}

@@ -20,7 +20,7 @@ export function LanguageToggle({ className, compact = false }: Props) {
   return (
     <div
       className={cn(
-        "inline-flex rounded-sm border border-border-strong p-0.5",
+        "inline-flex rounded-[var(--radius-ui)] border border-border-strong p-0.5",
         className,
       )}
       role="group"
@@ -34,7 +34,7 @@ export function LanguageToggle({ className, compact = false }: Props) {
             type="button"
             onClick={() => setLanguage(option.value)}
             className={cn(
-              "cursor-pointer rounded-sm font-bold transition-colors",
+              "cursor-pointer rounded-[var(--radius-ui)] font-bold transition-colors",
               compact ? "px-2.5 py-1.5 text-xs" : "px-3 py-1.5 text-sm",
               option.tamilFont && "font-tamil",
               isActive

@@ -42,7 +42,7 @@ export default function ScriptEvaluationPage() {
             ))}
           </div>
 
-          <Card static className="corner-accent mt-16 p-8">
+          <Card static className="mt-16 p-8">
             <h2 className="section-heading text-xl">How to Begin</h2>
             <ol className="mt-6 space-y-4">
               {c.process.map((step, i) => (

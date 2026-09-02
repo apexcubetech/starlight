@@ -26,7 +26,7 @@ export function SathaiahPortrait({ size = "md", className, priority }: Props) {
   );
 
   return (
-    <div className={cn("corner-accent relative shrink-0 p-3", className)}>
+    <div className={cn("relative shrink-0 rounded-[var(--radius-ui)] p-3 ring-1 ring-gold/20", className)}>
       <Image
         src="/face.png"
         alt={alt}

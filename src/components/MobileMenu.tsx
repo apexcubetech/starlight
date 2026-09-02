@@ -71,13 +71,12 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         aria-label="Close menu overlay"
       />
       <div className="absolute inset-y-0 right-0 flex w-[min(100%,340px)] flex-col border-l border-border-strong bg-surface shadow-2xl">
-        <div className="absolute inset-0 grid-bg opacity-30" aria-hidden="true" />
         <div className="relative flex items-center justify-between gap-3 border-b border-border px-5 py-5">
           <LanguageToggle compact />
           <button
             type="button"
             onClick={onClose}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-border-strong text-gold-text font-bold"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-ui)] border border-border-strong text-gold-text font-bold"
             aria-label="Close menu"
           >
             ✕
@@ -96,7 +95,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                   <button
                     type="button"
                     className={cn(
-                      "flex w-full items-center justify-between rounded-sm px-4 py-3.5 text-left text-sm font-bold transition-colors",
+                      "flex w-full items-center justify-between rounded-[var(--radius-ui)] px-4 py-3.5 text-left text-sm font-bold transition-colors",
                       isActive(item.href)
                         ? "text-gold-bright"
                         : "text-foreground",
@@ -122,7 +121,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                         <Link
                           href={child.href}
                           className={cn(
-                            "block rounded-sm px-8 py-2.5 text-sm font-semibold",
+                            "block rounded-[var(--radius-ui)] px-8 py-2.5 text-sm font-semibold",
                             isActive(child.href)
                               ? "text-gold-bright"
                               : "text-muted",
@@ -144,7 +143,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                   <Link
                     href={item.href}
                     className={cn(
-                      "block rounded-sm px-4 py-3.5 text-sm font-bold transition-colors",
+                      "block rounded-[var(--radius-ui)] px-4 py-3.5 text-sm font-bold transition-colors",
                       isActive(item.href)
                         ? "text-gold-bright"
                         : "text-muted hover:text-foreground",

@@ -13,7 +13,7 @@ export function PageBackground({ variant = "default" }: PageBackgroundProps) {
           <div className="absolute inset-0 gold-smudge" />
           <div className="absolute inset-0 gold-smudge-bl" />
           {variant === "hero" && (
-            <div className="absolute inset-0 gold-smudge-tr pulse-glow" />
+            <div className="absolute inset-0 gold-smudge-tr" />
           )}
         </>
       )}

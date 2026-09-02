@@ -11,7 +11,7 @@ type CardProps = {
 export function Card({ children, className, href, static: isStatic }: CardProps) {
   const classes = cn(
     isStatic ? "card-static" : "card-modern",
-    "rounded-sm p-6 sm:p-8",
+    "p-6 sm:p-8",
     className,
   );
 

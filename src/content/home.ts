@@ -6,9 +6,9 @@ export const homeContent = {
     tagline: "Discover. Develop. Elevate storytellers.",
     taglineTamil: "கதை சொல்லிகளைக் கண்டறி. வளர்த்தெடு. உயர்த்து.",
     description:
-      "Cinema moves forward not because of stars, budgets or technology, but because someone tells a story worth listening to.",
+      "Official Website of N. Sathaiah. Tamil Film Critic, Story Listener and Discoverer of Storytellers.",
     descriptionTamil:
-      "நட்சத்திரங்கள், பட்ஜெட் அல்லது தொழில்நுட்பம் காரணமாக அல்ல: கேட்கத் தகுந்த ஒரு கதையை யாராவது சொல்லும்போதுதான் சினிமா முன்னேறுகிறது.",
+      "N. சாத்தையாவின் அதிகாரப்பூர்வ வலைத்தளம். தமிழ் திரைப்பட விமர்சகர், கதை கேட்பவர், கதை சொல்லிகளைக் கண்டறிபவர்.",
   },
   introduction: {
     title: "Who is Sathaiah?",
@@ -32,20 +32,24 @@ export const homeContent = {
     quoteTamil:
       "மக்கள் ஒரு நட்சத்திரத்துக்காக திரையரங்குக்குள் நுழைவார்கள். ஆனால் ஒரு கதைக்காகத்தான் திரும்ப வருவார்கள்.",
   },
+  bookHighlight: {
+    title: "My Philosophy of Cinema",
+    titleTamil: "சினிமாவைப் பற்றி நான் நம்புவது",
+    description:
+      "The experience of an observer, the notes of a listener, and the hopes of someone searching for the next great storyteller.",
+    descriptionTamil:
+      "ஒரு பார்வையாளனின் அனுபவம், ஒரு கதை கேட்பவனின் குறிப்புகள், அடுத்த நல்ல கதை சொல்லியைத் தேடும் ஒருவரின் நம்பிக்கைகள்.",
+    href: "/philosophy",
+  },
   chapters: {
     title: "The Manuscript",
     titleTamil: "கையெழுத்துப் பிரதி",
     kicker: "Philosophy",
     kickerTamil: "தத்துவம்",
-  },
-  bookHighlight: {
-    title: "My Philosophy of Cinema",
-    titleTamil: "சினிமாவைப் பற்றி நான் நம்புவது",
     description:
-      "The manuscript presented in both Tamil and English: the experience of an observer, the notes of a listener, and the hopes of someone searching for the next great storyteller.",
+      "Eight chapters on cinema, storytelling, and talent discovery: the experience of an observer and the notes of a listener.",
     descriptionTamil:
-      "தமிழ் மற்றும் ஆங்கிலத்தில் வழங்கப்படும் கையெழுத்துப் பிரதி: ஒரு பார்வையாளனின் அனுபவம், ஒரு கதை கேட்பவனின் குறிப்புகள், அடுத்த நல்ல கதை சொல்லியைத் தேடும் ஒருவரின் நம்பிக்கைகள்.",
-    href: "/philosophy",
+      "சினிமா, கதை சொல்லல், திறமையைக் கண்டறிதல் பற்றிய எட்டு அத்தியாயங்கள்: ஒரு பார்வையாளனின் அனுபவமும் ஒரு கதை கேட்பவனின் குறிப்புகளும்.",
   },
   ctas: {
     submitDetails: {

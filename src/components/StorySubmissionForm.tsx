@@ -6,6 +6,7 @@ import { storySubmissionContent } from "@/content/story-submission";
 import { trackEvent } from "@/components/GoogleAnalytics";
 import { useLanguage } from "@/components/LanguageProvider";
 import { pickLocalized } from "@/lib/i18n";
+import { uiStrings } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -42,7 +43,7 @@ export function StorySubmissionForm() {
 
     if (!captchaAnswer.trim()) {
       setFormState("error");
-      setErrorMessage("Please enter the CAPTCHA characters.");
+      setErrorMessage(uiStrings.captchaRequired[language]);
       return;
     }
 
@@ -88,7 +89,7 @@ export function StorySubmissionForm() {
 
   if (formState === "success") {
     return (
-      <div className="card-static corner-accent rounded-sm p-8 text-center">
+      <div className="card-static p-8 text-center">
         <p className="text-3xl font-bold text-gold-text">✓</p>
         <p className="text-body mt-4">{f.success[language]}</p>
         <button
@@ -111,22 +112,24 @@ export function StorySubmissionForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field label={`${f.name[language]} *`} htmlFor="name">
+        <Field label={f.name[language]} htmlFor="name" required>
           <input
             id="name"
             name="name"
             required
+            aria-required="true"
             maxLength={120}
             onFocus={handleStart}
             className={inputClass}
           />
         </Field>
-        <Field label={`${f.email[language]} *`} htmlFor="email">
+        <Field label={f.email[language]} htmlFor="email" required>
           <input
             id="email"
             name="email"
             type="email"
             required
+            aria-required="true"
             maxLength={254}
             onFocus={handleStart}
             className={inputClass}
@@ -134,33 +137,36 @@ export function StorySubmissionForm() {
         </Field>
       </div>
 
-      <Field label={`${f.phone[language]} *`} htmlFor="phone">
+      <Field label={f.phone[language]} htmlFor="phone" required>
         <input
           id="phone"
           name="phone"
           type="tel"
           required
+          aria-required="true"
           maxLength={20}
           className={inputClass}
         />
       </Field>
 
-      <Field label={`${f.genre[language]} *`} htmlFor="genre">
+      <Field label={f.genre[language]} htmlFor="genre" required>
         <input
           id="genre"
           name="genre"
           required
+          aria-required="true"
           maxLength={300}
           placeholder={f.genre.hint[language]}
           className={inputClass}
         />
       </Field>
 
-      <Field label={`${f.workExperience[language]} *`} htmlFor="workExperience">
+      <Field label={f.workExperience[language]} htmlFor="workExperience" required>
         <textarea
           id="workExperience"
           name="workExperience"
           required
+          aria-required="true"
           rows={5}
           maxLength={5000}
           placeholder={f.workExperience.hint[language]}
@@ -168,11 +174,12 @@ export function StorySubmissionForm() {
         />
       </Field>
 
-      <Field label={`${f.consultReason[language]} *`} htmlFor="consultReason">
+      <Field label={f.consultReason[language]} htmlFor="consultReason" required>
         <textarea
           id="consultReason"
           name="consultReason"
           required
+          aria-required="true"
           rows={5}
           maxLength={5000}
           className={cn(inputClass, "resize-y")}
@@ -181,7 +188,7 @@ export function StorySubmissionForm() {
 
       <fieldset>
         <legend className="mb-3 block text-sm font-bold text-foreground/80">
-          {f.referral[language]} *
+          {f.referral[language]}
         </legend>
         <div className="space-y-2">
           {storySubmissionContent.referralOptions.map((option) => (
@@ -194,6 +201,7 @@ export function StorySubmissionForm() {
                 name="referralSource"
                 value={option.value}
                 required
+                aria-required="true"
                 className="accent-[var(--gold)]"
               />
               <span>
@@ -219,12 +227,13 @@ export function StorySubmissionForm() {
           type="checkbox"
           name="consent"
           required
+          aria-required="true"
           className="mt-1 accent-[var(--gold)]"
         />
         <span>{consent}</span>
       </label>
 
-      <Field label="CAPTCHA *" htmlFor="captcha">
+      <Field label={uiStrings.captchaLabel[language]} htmlFor="captcha" required>
         <CaptchaField
           value={captchaAnswer}
           onChange={setCaptchaAnswer}
@@ -252,16 +261,18 @@ export function StorySubmissionForm() {
 }
 
 const inputClass =
-  "w-full rounded-sm border border-border-strong bg-background/80 px-4 py-3.5 font-medium text-foreground placeholder:text-muted/40 transition-colors focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30";
+  "input-ui w-full border border-border-strong bg-background/80 px-4 py-3.5 font-medium text-foreground placeholder:text-muted/40 transition-colors focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30";
 
 function Field({
   label,
   htmlFor,
   children,
+  required,
 }: {
   label: string;
   htmlFor: string;
   children: React.ReactNode;
+  required?: boolean;
 }) {
   return (
     <div>
@@ -270,6 +281,7 @@ function Field({
         className="mb-2 block text-sm font-bold text-foreground/80"
       >
         {label}
+        {required ? <span className="sr-only"> (required)</span> : null}
       </label>
       {children}
     </div>
