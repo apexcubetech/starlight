@@ -181,8 +181,10 @@ body {
   font-weight: 500;
   line-height: 1.75;
   color: var(--muted);
+  width: 100%;
   text-align: justify;
   text-wrap: pretty;
+  hyphens: auto;
 }
 
 .prose-content p {

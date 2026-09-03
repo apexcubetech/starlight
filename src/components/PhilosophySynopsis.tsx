@@ -7,10 +7,29 @@ import { TamilText } from "@/components/TamilText";
 import { useLanguage } from "@/components/LanguageProvider";
 import { pickLocalized } from "@/lib/i18n";
 
+const SCROLL_MARKER_OFFSET = 120;
+
 type Props = {
   items: SynopsisItem[];
   collapsible?: boolean;
+  /** Re-bind scroll tracking when main content remounts (e.g. language switch). */
+  contentKey?: string;
 };
+
+function getActiveSectionId(sectionIds: string[]): string {
+  let activeId = sectionIds[0] ?? "";
+
+  for (const id of sectionIds) {
+    const element = document.getElementById(id);
+    if (!element) continue;
+
+    if (element.getBoundingClientRect().top <= SCROLL_MARKER_OFFSET) {
+      activeId = id;
+    }
+  }
+
+  return activeId;
+}
 
 function SynopsisLinks({
   items,
@@ -68,37 +87,42 @@ function SynopsisPanel({ items, activeId, onSelect }: {
   );
 }
 
-export function PhilosophySynopsis({ items, collapsible = false }: Props) {
+export function PhilosophySynopsis({
+  items,
+  collapsible = false,
+  contentKey,
+}: Props) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const sectionIds = items.map((item) => item.id);
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
 
-    if (elements.length === 0) return;
+    const syncActiveSection = () => {
+      const nextId = getActiveSectionId(sectionIds);
+      setActiveId((current) => (current === nextId ? current : nextId));
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    syncActiveSection();
 
-        if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -55% 0px",
-        threshold: [0, 0.1, 0.25, 0.5],
-      },
-    );
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        syncActiveSection();
+        ticking = false;
+      });
+    };
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [items]);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", syncActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", syncActiveSection);
+    };
+  }, [items, contentKey]);
 
   const handleSelect = (id: string) => {
     setActiveId(id);

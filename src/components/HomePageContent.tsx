@@ -112,41 +112,46 @@ export function HomePageContent() {
 
       <Section alt>
         <div className="card-static border-gold/20 p-8 sm:p-10 lg:p-12">
-          <div className="grid gap-8 lg:grid-cols-3 lg:gap-10">
-            <Card static className="border-gold/25 bg-surface/60 lg:col-span-1">
-              <p className="kicker">Philosophy</p>
+          <div className="grid items-stretch gap-8 lg:grid-cols-3 lg:gap-10">
+            <Card
+              static
+              className="flex h-full flex-col border-gold/25 bg-surface/60 lg:col-span-1"
+            >
               <Localized
                 en={c.bookHighlight.title}
                 ta={c.bookHighlight.titleTamil}
                 as="h2"
-                className="section-heading mt-4 text-2xl sm:text-3xl"
+                className="section-heading text-lg text-gold-text"
               />
               <Localized
                 en={c.bookHighlight.description}
                 ta={c.bookHighlight.descriptionTamil}
                 as="p"
-                className="text-body mt-5 text-justify"
+                className="text-body mt-5 flex-1 text-justify"
               />
-              <Link href={c.bookHighlight.href} className="link-gold mt-6 inline-block">
+              <Link
+                href={c.bookHighlight.href}
+                className="link-gold mt-6 inline-block shrink-0"
+              >
                 {uiStrings.learnMore[language]}
               </Link>
             </Card>
 
             {[c.ctas.submitDetails, c.ctas.connect].map((cta) => (
-              <Card key={cta.href} href={cta.href} className="flex flex-col">
+              <Card key={cta.href} href={cta.href} className="flex h-full flex-col">
                 <Localized
                   en={cta.title}
                   ta={cta.titleTamil}
                   as="h3"
-                  className="section-heading text-lg group-hover:text-gold-text transition-colors"
+                  className="section-heading text-lg text-gold-text transition-colors group-hover:text-gold-bright"
                 />
                 <Localized
                   en={cta.description}
                   ta={cta.descriptionTamil}
                   as="p"
-                  className="text-body mt-3 flex-1 text-justify"
+                  className="text-body mt-5 flex-1 text-justify"
                 />
-                <span className="link-gold mt-6 inline-block text-sm">
+                <span className="link-gold mt-6 inline-block shrink-0 text-sm">
                   {uiStrings.learnMore[language]}
                 </span>
               </Card>

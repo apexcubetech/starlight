@@ -145,12 +145,16 @@ export function PhilosophyManuscript() {
       <section className="section-block relative py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="mt-10 lg:hidden">
-            <PhilosophySynopsis items={sathaiahSynopsis} collapsible />
+            <PhilosophySynopsis
+              items={sathaiahSynopsis}
+              collapsible
+              contentKey={language}
+            />
           </div>
 
           <div className="mt-10 grid items-start gap-10 lg:mt-12 lg:grid-cols-[260px_minmax(0,1fr)]">
             <aside className="sticky top-24 z-20 hidden self-start lg:block">
-              <PhilosophySynopsis items={sathaiahSynopsis} />
+              <PhilosophySynopsis items={sathaiahSynopsis} contentKey={language} />
             </aside>
 
             <ManuscriptContent key={language} language={language} />

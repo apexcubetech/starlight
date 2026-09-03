@@ -30,12 +30,12 @@ export const homeContent = {
     kicker: "Starlight Reels",
     kickerTamil: "ஸ்டார்லைட் ரீல்ஸ்",
     paragraphs: [
-      "Dinesh's contribution to the creation of Starlight Reels has been significant. He was the one who brought structure and organization to work that had been carried out individually over many years. From creating an identity for this initiative, including the name \"Starlight Reels\" to bringing together the people who helped turn it into a functioning platform, his role has been essential.",
-      "Over the years, his keen eye and ability to listen carefully have been an important part of this journey. Remembering even the smallest details mentioned years ago, and noticing them precisely when they appear on screen in a film, has always been a distinctive part of his perspective.",
+      'Dinesh played an important role in the design of Starlight Reels. He was the one who added structure and organization to work that had been done independently over many years. His work has been critical in developing an identity for this endeavor, including the name "Starlight Reels" as well as bringing together the people who have helped convert it into a functional platform.',
+      "His keen eye and ability to listen have been invaluable throughout this process. Remembering even the smallest things from years ago and detecting them precisely when they appear on screen in a film has always been a distinguishing feature of his perspective.",
     ],
     paragraphsTamil: [
-      "ஸ்டார்லைட் ரீல்ஸ் உருவாகியதில் தினேஷின் பங்களிப்பு முக்கியமானது. பல ஆண்டுகளாக தனிப்பட்ட முறையில் தொடர்ந்து வந்த இந்தப் பணிக்கு ஒரு கட்டமைப்பையும் ஒழுங்கையும் கொண்டு வந்தவர் அவர். 'Starlight Reels' என்ற பெயர் உட்பட, இந்த முயற்சிக்கு ஒரு அடையாளத்தை உருவாக்கியதிலும், இதை ஒரு செயல்படும் தளமாக உருவாக்க உதவியவர்களை ஒன்றிணைத்ததிலும் அவரது பங்கு முக்கியமானது.",
-      "பல ஆண்டுகளாக, அவருடைய கூர்மையான கவனமும், கவனமாகக் கேட்கும் தன்மையும் இந்தப் பயணத்தில் முக்கியமானதாக இருந்திருக்கிறது. பல வருடங்களுக்கு முன்பு சொல்லப்பட்ட சிறிய விஷயங்களைக்கூட நினைவில் வைத்துக்கொண்டு, அவை ஒரு படத்தில் திரையில் தோன்றும்போது அதைத் துல்லியமாகக் கவனிப்பது — அவருடைய தனித்துவமான பார்வையின் ஒரு பகுதியாகவே இருந்து வருகிறது.",
+      "ஸ்டார்லைட் ரீல்ஸின் வடிவமைப்பில் தினேஷ் முக்கியப் பங்கு வகித்தார். பல ஆண்டுகளாகத் தனித்தனியாக மேற்கொள்ளப்பட்டு வந்த பணிகளுக்கு ஒரு கட்டமைப்பையும் ஒழுங்கையும் கொண்டு வந்தவர் அவரே. இந்த முயற்சிக்கான தனித்துவமான அடையாளத்தை உருவாக்குவதிலும், “ஸ்டார்லைட் ரீல்ஸ்” என்ற பெயரை உருவாக்கியதிலும், இதை ஒரு செயல்படும் தளமாக மாற்ற உதவியவர்களை ஒருங்கிணைப்பதிலும் அவரது பங்களிப்பு முக்கியமானதாக இருந்தது.",
+      "இந்தப் பயணம் முழுவதும் அவரது கூர்மையான கவனமும், கவனமாகக் கேட்கும் திறனும் மிகுந்த மதிப்புடையதாக இருந்தன. பல ஆண்டுகளுக்கு முன்பு நடந்த மிகச் சிறிய விஷயங்களைக்கூட நினைவில் வைத்திருந்து, அவை ஒரு திரைப்படத்தில் திரையில் தோன்றும் தருணத்தில் அவற்றைத் துல்லியமாக அடையாளம் காணும் திறன், அவரது பார்வையின் தனித்துவமான அம்சமாக எப்போதும் இருந்து வந்துள்ளது.",
     ],
   },
   philosophyHighlight: {
@@ -78,8 +78,7 @@ export const homeContent = {
     connect: {
       title: "Connect",
       titleTamil: "தொடர்பு",
-      description:
-        "Reach Starlight Reels directly through WhatsApp or email.",
+      description: "Reach Starlight Reels directly through WhatsApp or email.",
       descriptionTamil:
         "வாட்ஸ்அப்ப் அல்லது மின்னஞ்சல் மூலம் ஸ்டார்லைட் ரீல்ஸை நேரடியாகத் தொடர்பு கொள்ளுங்கள்.",
       href: "/contact",
