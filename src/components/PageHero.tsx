@@ -60,11 +60,11 @@ export function PageHero({
           )}
           {displaySubtitle &&
             (isTamil ? (
-              <TamilText className="text-lead mt-6 font-semibold text-foreground/80">
+              <TamilText className="text-lead mt-6 text-justify font-semibold text-foreground/80">
                 {displaySubtitle}
               </TamilText>
             ) : (
-              <p className="text-lead mt-6 font-semibold text-foreground/80">
+              <p className="text-lead mt-6 text-justify font-semibold text-foreground/80">
                 {displaySubtitle}
               </p>
             ))}

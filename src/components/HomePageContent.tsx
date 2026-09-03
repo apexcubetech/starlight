@@ -42,7 +42,7 @@ export function HomePageContent() {
             en={c.hero.description}
             ta={c.hero.descriptionTamil}
             as="p"
-            className="animate-fade-up mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-muted [animation-delay:300ms]"
+            className="animate-fade-up mx-auto mt-8 max-w-2xl text-justify text-lg font-medium leading-relaxed text-muted [animation-delay:300ms]"
           />
 
           <Localized
@@ -125,7 +125,7 @@ export function HomePageContent() {
                 en={c.bookHighlight.description}
                 ta={c.bookHighlight.descriptionTamil}
                 as="p"
-                className="text-body mt-5"
+                className="text-body mt-5 text-justify"
               />
               <Link href={c.bookHighlight.href} className="link-gold mt-6 inline-block">
                 {uiStrings.learnMore[language]}
@@ -144,7 +144,7 @@ export function HomePageContent() {
                   en={cta.description}
                   ta={cta.descriptionTamil}
                   as="p"
-                  className="text-body mt-3 flex-1"
+                  className="text-body mt-3 flex-1 text-justify"
                 />
                 <span className="link-gold mt-6 inline-block text-sm">
                   {uiStrings.learnMore[language]}
@@ -179,7 +179,7 @@ export function HomePageContent() {
           en={c.chapters.description}
           ta={c.chapters.descriptionTamil}
           as="p"
-          className="text-body mx-auto mt-6 max-w-3xl text-center"
+          className="text-body mx-auto mt-6 max-w-3xl text-justify"
         />
         <div className="mt-10">
           <ChapterCarousel />

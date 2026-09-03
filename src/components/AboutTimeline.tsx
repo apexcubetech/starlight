@@ -51,7 +51,7 @@ export function AboutTimeline({ items }: Props) {
             <TamilText as="h3" className="section-heading text-xl">
               {pickLocalized(active.label, active.labelTamil, language)}
             </TamilText>
-            <TamilText className="text-body mt-4">
+            <TamilText className="text-body mt-4 text-left">
               {pickLocalized(
                 active.description,
                 active.descriptionTamil,
@@ -62,7 +62,7 @@ export function AboutTimeline({ items }: Props) {
         ) : (
           <>
             <h3 className="section-heading text-xl">{active.label}</h3>
-            <p className="text-body mt-4">{active.description}</p>
+            <p className="text-body mt-4 text-left">{active.description}</p>
           </>
         )}
       </div>

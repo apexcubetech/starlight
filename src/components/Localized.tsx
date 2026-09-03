@@ -39,7 +39,7 @@ export function LocalizedParagraphs({
   en,
   ta,
   className,
-  paragraphClassName = "text-body font-medium",
+  paragraphClassName = "text-body text-justify font-medium",
 }: LocalizedParagraphsProps) {
   const { language } = useLanguage();
   const paragraphs = language === "ta" && ta && ta.length > 0 ? ta : en;

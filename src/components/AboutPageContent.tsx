@@ -72,12 +72,20 @@ export function AboutPageContent() {
                 as="h2"
                 className="section-heading text-2xl"
               />
-              <Localized
-                en={section.content}
-                ta={section.contentTamil}
-                as="p"
-                className="text-body mt-5"
-              />
+              {"paragraphs" in section && section.paragraphs ? (
+                <LocalizedParagraphs
+                  en={section.paragraphs}
+                  ta={section.paragraphsTamil}
+                  className="mt-5"
+                />
+              ) : (
+                <Localized
+                  en={section.content!}
+                  ta={section.contentTamil}
+                  as="p"
+                  className="text-body mt-5 text-justify"
+                />
+              )}
             </article>
           ))}
         </div>

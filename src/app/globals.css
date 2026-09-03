@@ -172,6 +172,8 @@ body {
   font-weight: 500;
   line-height: 1.7;
   color: var(--muted);
+  text-align: justify;
+  text-wrap: pretty;
 }
 
 .text-body {
@@ -179,6 +181,13 @@ body {
   font-weight: 500;
   line-height: 1.75;
   color: var(--muted);
+  text-align: justify;
+  text-wrap: pretty;
+}
+
+.prose-content p {
+  text-align: justify;
+  text-wrap: pretty;
 }
 
 .prose-content p + p {
