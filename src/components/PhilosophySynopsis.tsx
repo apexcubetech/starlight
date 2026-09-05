@@ -33,18 +33,19 @@ function getActiveSectionId(sectionIds: string[]): string {
 
 function formatSynopsisLabel(
   item: SynopsisItem,
-  index: number,
-  items: SynopsisItem[],
   language: "en" | "ta",
 ): string {
-  const base = pickLocalized(item.labelEn, item.labelTa, language);
-  if (item.id === "introduction") return base;
+  if (item.id === "preface" || item.id === "closing") {
+    return pickLocalized(item.labelEn, item.labelTa, language);
+  }
 
-  const number = items
-    .slice(0, index + 1)
-    .filter((entry) => entry.id !== "introduction").length;
+  const chapterMatch = item.id.match(/^chapter-(\d+)$/);
+  if (chapterMatch) {
+    const number = chapterMatch[1].padStart(2, "0");
+    return language === "ta" ? `அத்தியாயம் ${number}` : `Chapter ${number}`;
+  }
 
-  return `${String(number).padStart(2, "0")} ${base}`;
+  return pickLocalized(item.labelEn, item.labelTa, language);
 }
 
 function SynopsisLinks({
@@ -62,7 +63,7 @@ function SynopsisLinks({
     <ol className="space-y-1">
       {items.map((item, index) => {
         const isActive = activeId === item.id;
-        const label = formatSynopsisLabel(item, index, items, language);
+        const label = formatSynopsisLabel(item, language);
         return (
           <li key={item.id}>
             <a

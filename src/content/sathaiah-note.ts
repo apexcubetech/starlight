@@ -101,15 +101,14 @@ export const sathaiahNoteContent = {
 };
 
 export const sathaiahSynopsis: SynopsisItem[] = [
-  { id: "introduction", labelEn: "Introduction", labelTa: "அறிமுகம்" },
   { id: "preface", labelEn: "Preface", labelTa: "முன்னுரை" },
-  { id: "chapter-1", labelEn: "Chapter 1", labelTa: "அத்தியாயம் 1" },
-  { id: "chapter-2", labelEn: "Chapter 2", labelTa: "அத்தியாயம் 2" },
-  { id: "chapter-3", labelEn: "Chapter 3", labelTa: "அத்தியாயம் 3" },
-  { id: "chapter-4", labelEn: "Chapter 4", labelTa: "அத்தியாயம் 4" },
-  { id: "chapter-5", labelEn: "Chapter 5", labelTa: "அத்தியாயம் 5" },
-  { id: "chapter-6", labelEn: "Chapter 6", labelTa: "அத்தியாயம் 6" },
-  { id: "chapter-7", labelEn: "Chapter 7", labelTa: "அத்தியாயம் 7" },
-  { id: "chapter-8", labelEn: "Chapter 8", labelTa: "அத்தியாயம் 8" },
+  { id: "chapter-1", labelEn: "Chapter 01", labelTa: "அத்தியாயம் 01" },
+  { id: "chapter-2", labelEn: "Chapter 02", labelTa: "அத்தியாயம் 02" },
+  { id: "chapter-3", labelEn: "Chapter 03", labelTa: "அத்தியாயம் 03" },
+  { id: "chapter-4", labelEn: "Chapter 04", labelTa: "அத்தியாயம் 04" },
+  { id: "chapter-5", labelEn: "Chapter 05", labelTa: "அத்தியாயம் 05" },
+  { id: "chapter-6", labelEn: "Chapter 06", labelTa: "அத்தியாயம் 06" },
+  { id: "chapter-7", labelEn: "Chapter 07", labelTa: "அத்தியாயம் 07" },
+  { id: "chapter-8", labelEn: "Chapter 08", labelTa: "அத்தியாயம் 08" },
   { id: "closing", labelEn: "Closing", labelTa: "முடிவுரை" },
 ];
