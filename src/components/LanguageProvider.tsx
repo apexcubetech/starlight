@@ -9,8 +9,9 @@ import {
   useState,
 } from "react";
 import {
-  DEFAULT_LANGUAGE,
+  LANGUAGE_COOKIE_KEY,
   LANGUAGE_STORAGE_KEY,
+  readStoredLanguage,
   type SiteLanguage,
 } from "@/lib/i18n";
 
@@ -22,26 +23,33 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<SiteLanguage>(DEFAULT_LANGUAGE);
-  const [ready, setReady] = useState(false);
+function persistLanguage(language: SiteLanguage) {
+  document.documentElement.lang = language === "ta" ? "ta" : "en";
+  localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+  document.cookie = `${LANGUAGE_COOKIE_KEY}=${language};path=/;max-age=${60 * 60 * 24 * 365};SameSite=Lax`;
+}
+
+type LanguageProviderProps = {
+  children: React.ReactNode;
+  initialLanguage: SiteLanguage;
+};
+
+export function LanguageProvider({
+  children,
+  initialLanguage,
+}: LanguageProviderProps) {
+  const [language, setLanguageState] = useState<SiteLanguage>(initialLanguage);
 
   useEffect(() => {
-    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (stored === "en" || stored === "ta") {
-      setLanguageState(stored);
-    }
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    document.documentElement.lang = language === "ta" ? "ta" : "en";
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
-  }, [language, ready]);
+    const stored = readStoredLanguage();
+    const resolved = stored !== initialLanguage ? stored : initialLanguage;
+    setLanguageState(resolved);
+    persistLanguage(resolved);
+  }, [initialLanguage]);
 
   const setLanguage = useCallback((next: SiteLanguage) => {
     setLanguageState(next);
+    persistLanguage(next);
   }, []);
 
   const value = useMemo(

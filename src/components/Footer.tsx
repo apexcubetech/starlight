@@ -27,10 +27,10 @@ export function Footer() {
                 Starlight Reels
               </span>
             </Link>
-            <p className="mt-5 max-w-xs text-sm font-semibold leading-relaxed text-foreground/90">
+            <p className="mt-5 max-w-xs text-sm font-bold leading-relaxed text-foreground/90">
               {pickLocalized(
-                siteConfig.footerRole,
-                siteConfig.footerRoleTamil,
+                siteConfig.footerHeadline,
+                siteConfig.footerHeadlineTamil,
                 language,
               )}
             </p>

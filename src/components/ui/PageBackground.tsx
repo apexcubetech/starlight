@@ -4,8 +4,11 @@ type PageBackgroundProps = {
 
 export function PageBackground({ variant = "default" }: PageBackgroundProps) {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-0 grid-bg opacity-60" />
+    <div
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden [transform:translateZ(0)]"
+      aria-hidden="true"
+    >
+      <div className="absolute -inset-px grid-bg opacity-60" />
       <div className="absolute inset-0 noise-overlay" />
 
       {variant !== "minimal" && (

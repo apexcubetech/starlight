@@ -31,6 +31,22 @@ function getActiveSectionId(sectionIds: string[]): string {
   return activeId;
 }
 
+function formatSynopsisLabel(
+  item: SynopsisItem,
+  index: number,
+  items: SynopsisItem[],
+  language: "en" | "ta",
+): string {
+  const base = pickLocalized(item.labelEn, item.labelTa, language);
+  if (item.id === "introduction") return base;
+
+  const number = items
+    .slice(0, index + 1)
+    .filter((entry) => entry.id !== "introduction").length;
+
+  return `${String(number).padStart(2, "0")} ${base}`;
+}
+
 function SynopsisLinks({
   items,
   activeId,
@@ -44,9 +60,9 @@ function SynopsisLinks({
 
   return (
     <ol className="space-y-1">
-      {items.map((item) => {
+      {items.map((item, index) => {
         const isActive = activeId === item.id;
-        const label = pickLocalized(item.labelEn, item.labelTa, language);
+        const label = formatSynopsisLabel(item, index, items, language);
         return (
           <li key={item.id}>
             <a

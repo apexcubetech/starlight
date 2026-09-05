@@ -13,7 +13,7 @@ export const chaptersContent = {
   title: "Chapters",
   titleTamil: "அத்தியாயங்கள்",
   subtitle: "From N. Sathaiah's Note — My Philosophy of Cinema",
-  subtitleTamil: "N. சாத்தையாவின் குறிப்பு - சினிமாவைப் பற்றி நான் நம்புவது",
+  subtitleTamil: "N. சாத்தையாவின் குறிப்பு - சினிமாவைப் பற்றிய என் தத்துவம்",
   preface: {
     title: "Preface — Why I Chose to Write This",
     titleTamil: "முன்னுரை — நான் ஏன் இதை எழுதுகிறேன்?",

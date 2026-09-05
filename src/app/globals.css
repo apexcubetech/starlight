@@ -93,11 +93,11 @@ body {
 
 .grid-bg {
   background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
-  background-attachment: fixed;
-  background-position: center top;
+  background-position: 0 0;
+  background-repeat: repeat;
 }
 
 .noise-overlay {

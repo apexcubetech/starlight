@@ -16,7 +16,7 @@ export type SynopsisItem = {
 
 export const sathaiahNoteContent = {
   title: "My Philosophy of Cinema",
-  titleTamil: "சினிமாவைப் பற்றி நான் நம்புவது",
+  titleTamil: "சினிமாவைப் பற்றிய என் தத்துவம்",
   subtitle: "N. Sathaiah's Note - Starlight Reels",
   subtitleTamil: "N. சாத்தையாவின் குறிப்பு - Starlight Reels",
   introEn: ["The manuscript is presented in both Tamil and English.", "We invite you to begin in the language that feels most natural to you."],

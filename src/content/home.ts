@@ -48,7 +48,7 @@ export const homeContent = {
   },
   bookHighlight: {
     title: "My Philosophy of Cinema",
-    titleTamil: "சினிமாவைப் பற்றி நான் நம்புவது",
+    titleTamil: "சினிமாவைப் பற்றிய என் தத்துவம்",
     description:
       "The experience of an observer, the notes of a listener, and the hopes of someone searching for the next great storyteller.",
     descriptionTamil:

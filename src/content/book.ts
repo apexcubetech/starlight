@@ -2,12 +2,12 @@ export const bookContent = {
   title: "The Book",
   titleTamil: "புத்தகம்",
   bookTitle: "My Philosophy of Cinema",
-  bookTitleTamil: "சினிமாவைப் பற்றி நான் நம்புவது",
+  bookTitleTamil: "சினிமாவைப் பற்றிய என் தத்துவம்",
   author: "N. Sathaiah",
   authorTamil: "N. சாத்தையா",
   subtitle: "N. Sathaiah's Note — Starlight Reels",
   description:
-    "This manuscript is presented in both Tamil and English. We invite you to begin in the language that feels most natural to you.",
+    "The manuscript is presented in both Tamil and English. We invite you to begin in the language that feels most natural to you.",
   descriptionTamil:
     "இக்குறிப்பேடு தமிழ் மற்றும் ஆங்கிலம் ஆகிய இரு மொழிகளிலும் வழங்கப்பட்டுள்ளது. உங்களுக்கு இயல்பாகவும் நெருக்கமாகவும் தோன்றும் மொழியிலிருந்து உங்கள் வாசிப்புப் பயணத்தைத் தொடங்குங்கள்.",
   aboutBook: {

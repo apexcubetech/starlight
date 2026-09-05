@@ -28,11 +28,11 @@ export const siteConfig = {
   tagline: "Tamil cinema • criticism • stories • ideas • writing",
   taglineTamil: "தமிழ் சினிமா • விமர்சனம் • கதைகள் • சிந்தனைகள் • எழுத்து",
   description:
-    "Official Website of N. Sathaiah. Tamil Film Critic, Story Listener and Discoverer of Storytellers.",
+    "Tamil Film Critic, Story Listener and Discoverer of Storytellers.",
   descriptionTamil:
-    "N. சாத்தையாவின் அதிகாரப்பூர்வ வலைத்தளம். தமிழ் திரைப்பட விமர்சகர், கதை கேட்பவர், கதை சொல்லிகளைக் கண்டறிபவர்.",
-  footerRole: "Tamil Film Critic",
-  footerRoleTamil: "தமிழ் திரைப்பட விமர்சகர்",
+    "தமிழ் திரைப்பட விமர்சகர், கதை கேட்பவர், கதை சொல்லிகளைக் கண்டறிபவர்.",
+  footerHeadline: "Official Website of N. Sathaiah.",
+  footerHeadlineTamil: "N. சாத்தையாவின் அதிகாரப்பூர்வ வலைத்தளம்.",
   url: "https://starlightreels.com",
   email: "starlightreels@gmail.com",
   whatsappNumber: "919791190881",
@@ -80,5 +80,9 @@ export const uiStrings = {
   captchaRequired: {
     en: "Please enter the CAPTCHA characters.",
     ta: "CAPTCHA எழுத்துகளை உள்ளிடவும்.",
+  },
+  requiredFieldsNote: {
+    en: "Fields marked with * are required.",
+    ta: "* குறியிடப்பட்ட புலங்கள் அவசியம்.",
   },
 };

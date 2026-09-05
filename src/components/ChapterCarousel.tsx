@@ -59,7 +59,7 @@ export function ChapterCarousel() {
         >
           {chapters.map((chapter, chapterIndex) => {
             const title = pickLocalized(chapter.titleEn, chapter.titleTa, language);
-            const label = `${uiStrings.chapter[language]} ${String(chapter.number).padStart(2, "0")}`;
+            const chapterNumber = String(chapter.number).padStart(2, "0");
             const isActive = chapterIndex === index;
 
             return (
@@ -70,22 +70,25 @@ export function ChapterCarousel() {
               >
                 <Link
                   href={`/philosophy#${chapter.id}`}
+                  aria-label={`${uiStrings.chapter[language]} ${chapterNumber}: ${title}`}
                   className={cn(
-                    "card-modern flex h-full min-h-[220px] flex-col p-6 transition-colors",
+                    "card-modern flex h-full min-h-[200px] flex-col p-6 transition-colors",
                     isActive && "ui-selected",
                   )}
                 >
-                  <span className="kicker">{label}</span>
+                  <span className="num-badge">{chapterNumber}</span>
+                  <p className="kicker mt-4">
+                    {uiStrings.chapter[language]} {chapterNumber}
+                  </p>
                   {isTamil ? (
-                    <TamilText as="h3" className="section-heading mt-3 text-lg">
+                    <TamilText as="h3" className="section-heading mt-3 flex-1 text-base leading-snug">
                       {title}
                     </TamilText>
                   ) : (
-                    <h3 className="section-heading mt-3 text-lg">{title}</h3>
+                    <h3 className="section-heading mt-3 flex-1 text-base leading-snug">
+                      {title}
+                    </h3>
                   )}
-                  <span className="link-gold mt-auto inline-block pt-5 text-sm">
-                    {uiStrings.readChapter[language]} →
-                  </span>
                 </Link>
               </div>
             );

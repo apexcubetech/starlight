@@ -111,6 +111,10 @@ export function StorySubmissionForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+      <p className="text-sm font-medium text-muted">
+        {uiStrings.requiredFieldsNote[language]}
+      </p>
+
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label={f.name[language]} htmlFor="name" required>
           <input
@@ -170,7 +174,7 @@ export function StorySubmissionForm() {
           rows={5}
           maxLength={5000}
           placeholder={f.workExperience.hint[language]}
-          className={cn(inputClass, "resize-y")}
+          className={inputClass}
         />
       </Field>
 
@@ -182,13 +186,17 @@ export function StorySubmissionForm() {
           aria-required="true"
           rows={5}
           maxLength={5000}
-          className={cn(inputClass, "resize-y")}
+          className={inputClass}
         />
       </Field>
 
       <fieldset>
         <legend className="mb-3 block text-sm font-bold text-foreground/80">
           {f.referral[language]}
+          <span className="text-gold-text" aria-hidden="true">
+            {" "}
+            *
+          </span>
         </legend>
         <div className="space-y-2">
           {storySubmissionContent.referralOptions.map((option) => (
@@ -218,7 +226,7 @@ export function StorySubmissionForm() {
           name="additionalInfo"
           rows={4}
           maxLength={5000}
-          className={cn(inputClass, "resize-y")}
+          className={inputClass}
         />
       </Field>
 
@@ -261,7 +269,7 @@ export function StorySubmissionForm() {
 }
 
 const inputClass =
-  "input-ui w-full border border-border-strong bg-background/80 px-4 py-3.5 font-medium text-foreground placeholder:text-muted/40 transition-colors focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30";
+  "input-ui w-full resize-none border border-border-strong bg-background/80 px-4 py-3.5 font-medium text-foreground placeholder:text-muted/40 transition-colors focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30";
 
 function Field({
   label,
@@ -281,6 +289,12 @@ function Field({
         className="mb-2 block text-sm font-bold text-foreground/80"
       >
         {label}
+        {required ? (
+          <span className="text-gold-text" aria-hidden="true">
+            {" "}
+            *
+          </span>
+        ) : null}
         {required ? <span className="sr-only"> (required)</span> : null}
       </label>
       {children}
