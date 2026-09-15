@@ -68,7 +68,7 @@ export function SiteShell({
   return (
     <>
       <Header variant={headerVariant} />
-      <main className="relative flex-1">{children}</main>
+      <main className="relative min-w-0 flex-1 overflow-x-clip">{children}</main>
       <Footer />
     </>
   );

@@ -31,8 +31,8 @@ export function PageHero({
   return (
     <section className={cn("relative pt-28 pb-14 sm:pt-36 sm:pb-20", className)}>
       <div className="absolute inset-0 gold-smudge opacity-80" aria-hidden="true" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
+      <div className="relative mx-auto min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="min-w-0 max-w-3xl">
           <p className="kicker">Starlight Reels</p>
           {isTamil ? (
             <TamilText

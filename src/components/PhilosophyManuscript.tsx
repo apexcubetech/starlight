@@ -46,7 +46,7 @@ function ManuscriptContent({ language }: { language: SiteLanguage }) {
   const closingTitle = isTamil ? "முடிவுரை" : "Closing";
 
   return (
-    <div lang={isTamil ? "ta" : "en"} className="min-w-0">
+    <div lang={isTamil ? "ta" : "en"} className="min-w-0 max-w-full overflow-x-clip">
       <article id="introduction" className="scroll-mt-28">
         {isTamil ? (
           <TamilText as="h2" className="section-heading text-2xl text-gold-text">
@@ -142,9 +142,9 @@ export function PhilosophyManuscript() {
         large
       />
 
-      <section className="section-block relative py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mt-10 lg:hidden">
+      <section className="section-block relative overflow-x-clip py-20 sm:py-24">
+        <div className="mx-auto min-w-0 max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mt-10 min-w-0 lg:hidden">
             <PhilosophySynopsis
               items={sathaiahSynopsis}
               collapsible
@@ -152,12 +152,14 @@ export function PhilosophyManuscript() {
             />
           </div>
 
-          <div className="mt-10 grid items-start gap-10 lg:mt-12 lg:grid-cols-[260px_minmax(0,1fr)]">
-            <aside className="sticky top-24 z-20 hidden self-start lg:block">
+          <div className="mt-10 grid min-w-0 items-start gap-10 lg:mt-12 lg:grid-cols-[260px_minmax(0,1fr)]">
+            <aside className="sticky top-24 z-20 hidden min-w-0 self-start lg:block">
               <PhilosophySynopsis items={sathaiahSynopsis} contentKey={language} />
             </aside>
 
-            <ManuscriptContent key={language} language={language} />
+            <div className="min-w-0">
+              <ManuscriptContent key={language} language={language} />
+            </div>
           </div>
         </div>
       </section>

@@ -48,6 +48,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -71,6 +72,8 @@ body {
   font-weight: 500;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .font-tamil {
@@ -158,6 +161,8 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.1;
   color: var(--foreground);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .section-heading {
@@ -165,6 +170,8 @@ body {
   letter-spacing: -0.015em;
   line-height: 1.2;
   color: var(--foreground);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .text-lead {
@@ -182,14 +189,27 @@ body {
   line-height: 1.75;
   color: var(--muted);
   width: 100%;
+  max-width: 100%;
   text-align: justify;
   text-wrap: pretty;
   hyphens: auto;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose-content {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .prose-content p {
   text-align: justify;
   text-wrap: pretty;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .prose-content p + p {
