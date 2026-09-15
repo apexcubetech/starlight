@@ -32,7 +32,10 @@ export function CaptchaField({
 
     try {
       const response = await fetch("/api/captcha", { cache: "no-store" });
-      const data = (await response.json()) as { svg?: string; message?: string };
+      const data = (await response.json()) as {
+        svg?: string;
+        message?: string;
+      };
 
       if (!response.ok || !data.svg) {
         throw new Error(data.message || "Unable to load CAPTCHA.");
@@ -43,9 +46,7 @@ export function CaptchaField({
     } catch (err) {
       setSvg("");
       onReadyChange?.(false);
-      setError(
-        err instanceof Error ? err.message : "Unable to load CAPTCHA.",
-      );
+      setError(err instanceof Error ? err.message : "Unable to load CAPTCHA.");
     } finally {
       setLoading(false);
     }
@@ -59,7 +60,7 @@ export function CaptchaField({
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-3">
         <div
-          className="input-ui flex min-h-[50px] min-w-[150px] items-center justify-center overflow-hidden border border-border-strong bg-background/80 px-2 py-1 [&_svg]:brightness-110 [&_svg]:contrast-125"
+          className="input-ui flex min-h-[50px] min-w-[150px] items-center justify-center overflow-hidden border border-gold/35 bg-surface px-2 py-1"
           aria-hidden={loading || !svg}
         >
           {loading ? (
@@ -96,7 +97,7 @@ export function CaptchaField({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={uiStrings.captchaPlaceholder[language]}
-        className={cn(inputClassName, "input-ui uppercase tracking-widest")}
+        className={cn(inputClassName, "input-ui tracking-widest")}
         aria-label={uiStrings.captchaLabel[language]}
       />
 

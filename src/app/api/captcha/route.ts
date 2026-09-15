@@ -8,11 +8,12 @@ export async function GET() {
     const captcha = svgCaptcha.create({
       size: 5,
       ignoreChars: "0oO1ilI",
-      noise: 1,
+      noise: 2,
+      inverse: true,
       color: false,
       width: 150,
       height: 50,
-      fontSize: 62,
+      fontSize: 56,
     });
 
     const cookieStore = await cookies();
