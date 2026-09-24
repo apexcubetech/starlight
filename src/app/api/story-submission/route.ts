@@ -7,6 +7,7 @@ import {
 import { connectDB } from "@/lib/mongodb";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { normalizeEmail, sanitizeString } from "@/lib/sanitize";
+import { assignSerialNumber } from "@/lib/serial-number";
 import { StorySubmission } from "@/models/StorySubmission";
 
 const MAX_BODY_SIZE = 50_000;
@@ -99,10 +100,17 @@ export async function POST(request: NextRequest) {
 
     await connectDB();
 
+    const { serialNumber, normalizedPhone } = await assignSerialNumber(
+      email,
+      phone,
+    );
+
     await StorySubmission.create({
+      serialNumber,
       name,
       email,
       phone,
+      normalizedPhone,
       genre,
       workExperience,
       consultReason,

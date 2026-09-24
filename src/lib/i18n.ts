@@ -3,7 +3,7 @@ export type SiteLanguage = "en" | "ta";
 export const LANGUAGE_STORAGE_KEY = "starlight-lang";
 export const LANGUAGE_COOKIE_KEY = "starlight-lang";
 
-export const DEFAULT_LANGUAGE: SiteLanguage = "ta";
+export const DEFAULT_LANGUAGE: SiteLanguage = "en";
 
 export function parseSiteLanguage(value: string | null | undefined): SiteLanguage {
   if (value === "en" || value === "ta") return value;

@@ -1,14 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import {
   SUBMISSION_STATUSES,
   type SubmissionStatus,
 } from "@/lib/submission-status";
 import { cn } from "@/lib/utils";
+import { LogoMark } from "./LogoMark";
 
 type Submission = {
   id: string;
+  serialNumber: string;
   name: string;
   email: string;
   phone: string;
@@ -23,6 +26,31 @@ type Submission = {
 };
 
 type ViewState = "loading" | "login" | "dashboard";
+
+function AdminTopBar() {
+  return (
+    <div className="border-b border-border bg-surface/80 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-6xl gap-8">
+        <Link
+          href="/"
+          className="rounded-(--radius-ui) border border-border px-4 py-2 text-sm text-muted transition hover:border-border-strong hover:text-foreground"
+        >
+          Go to home
+        </Link>
+        <div className="group flex items-center gap-3">
+          <LogoMark
+            size="sm"
+            priority
+            className="transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="hidden text-sm font-bold tracking-[0.2em] text-gold-text uppercase sm:block">
+            Starlight Reels
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en-IN", {
@@ -135,196 +163,217 @@ export function AdminDashboard() {
 
   if (view === "loading") {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background px-4">
-        <p className="text-sm text-muted">Loading…</p>
+      <div className="min-h-screen bg-background">
+        <AdminTopBar />
+        <div className="flex min-h-[calc(100vh-57px)] items-center justify-center px-4">
+          <p className="text-sm text-muted">Loading…</p>
+        </div>
       </div>
     );
   }
 
   if (view === "login") {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-        <div className="w-full max-w-md rounded-[var(--radius-ui)] border border-border bg-surface-card p-8 shadow-lg">
-          <h1 className="text-xl font-semibold text-gold-text">Admin sign in</h1>
-          <p className="mt-2 text-sm text-muted">
-            Sign in to review story submissions.
-          </p>
+      <div className="min-h-screen bg-background">
+        <AdminTopBar />
+        <div className="flex min-h-[calc(100vh-57px)] items-center justify-center px-4 py-12">
+          <div className="w-full max-w-md rounded-[var(--radius-ui)] border border-border bg-surface-card p-8 shadow-lg">
+            <h1 className="text-xl font-semibold text-gold-text">
+              Admin sign in
+            </h1>
+            <p className="mt-2 text-sm text-muted">
+              Sign in to review story submissions.
+            </p>
 
-          <form onSubmit={handleLogin} className="mt-8 space-y-5">
-            <label className="block space-y-2">
-              <span className="text-sm text-muted">Username</span>
-              <input
-                type="text"
-                name="username"
-                autoComplete="username"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                required
-                className="w-full rounded-[var(--radius-ui)] border border-border bg-surface px-3 py-2.5 text-sm text-foreground outline-none focus:border-border-strong"
-              />
-            </label>
+            <form onSubmit={handleLogin} className="mt-8 space-y-5">
+              <label className="block space-y-2">
+                <span className="text-sm text-muted">Username</span>
+                <input
+                  type="text"
+                  name="username"
+                  autoComplete="username"
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  required
+                  className="w-full rounded-[var(--radius-ui)] border border-border bg-surface px-3 py-2.5 text-sm text-foreground outline-none focus:border-border-strong"
+                />
+              </label>
 
-            <label className="block space-y-2">
-              <span className="text-sm text-muted">Password</span>
-              <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-                className="w-full rounded-[var(--radius-ui)] border border-border bg-surface px-3 py-2.5 text-sm text-foreground outline-none focus:border-border-strong"
-              />
-            </label>
+              <label className="block space-y-2">
+                <span className="text-sm text-muted">Password</span>
+                <input
+                  type="password"
+                  name="password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                  className="w-full rounded-[var(--radius-ui)] border border-border bg-surface px-3 py-2.5 text-sm text-foreground outline-none focus:border-border-strong"
+                />
+              </label>
 
-            {loginError ? (
-              <p className="text-sm text-red-400">{loginError}</p>
-            ) : null}
+              {loginError ? (
+                <p className="text-sm text-red-400">{loginError}</p>
+              ) : null}
 
-            <button
-              type="submit"
-              disabled={loginLoading}
-              className="w-full rounded-[var(--radius-ui)] border border-border-strong bg-gold-dim px-4 py-2.5 text-sm font-semibold text-gold-text transition hover:border-gold disabled:opacity-60"
-            >
-              {loginLoading ? "Signing in…" : "Sign in"}
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={loginLoading}
+                className="w-full rounded-[var(--radius-ui)] border border-border-strong bg-gold-dim px-4 py-2.5 text-sm font-semibold text-gold-text transition hover:border-gold disabled:opacity-60"
+              >
+                {loginLoading ? "Signing in…" : "Sign in"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-semibold text-gold-text">
-              Story submissions
-            </h1>
-            <p className="mt-1 text-sm text-muted">
-              {submissions.length} submission
-              {submissions.length === 1 ? "" : "s"}
-            </p>
+    <div className="min-h-screen bg-background">
+      <AdminTopBar />
+      <div className="px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-semibold text-gold-text">
+                Story submissions
+              </h1>
+              <p className="mt-1 text-sm text-muted">
+                {submissions.length} submission
+                {submissions.length === 1 ? "" : "s"}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="rounded-[var(--radius-ui)] border border-border px-4 py-2 text-sm text-muted transition hover:border-border-strong hover:text-foreground"
+            >
+              Sign out
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="rounded-[var(--radius-ui)] border border-border px-4 py-2 text-sm text-muted transition hover:border-border-strong hover:text-foreground"
-          >
-            Sign out
-          </button>
-        </div>
 
-        {loadError ? (
-          <p className="mt-6 rounded-[var(--radius-ui)] border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-            {loadError}
-          </p>
-        ) : null}
+          {loadError ? (
+            <p className="mt-6 rounded-[var(--radius-ui)] border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+              {loadError}
+            </p>
+          ) : null}
 
-        {submissions.length === 0 ? (
-          <p className="mt-10 text-sm text-muted">No submissions yet.</p>
-        ) : (
-          <div className="mt-8 space-y-4">
-            {submissions.map((submission) => {
-              const expanded = expandedId === submission.id;
-              return (
-                <article
-                  key={submission.id}
-                  className="rounded-[var(--radius-ui)] border border-border bg-surface-card p-5"
-                >
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div className="min-w-0 space-y-1">
-                      <h2 className="text-lg font-semibold text-foreground">
-                        {submission.name}
-                      </h2>
-                      <p className="text-sm text-muted">
-                        {submission.email} · {submission.phone}
-                      </p>
-                      <p className="text-xs text-muted">
-                        Submitted {formatDate(submission.createdAt)}
-                      </p>
-                    </div>
-
-                    <label className="flex shrink-0 flex-col gap-1.5">
-                      <span className="text-xs uppercase tracking-wide text-muted">
-                        Status
-                      </span>
-                      <select
-                        value={submission.status}
-                        disabled={updatingId === submission.id}
-                        onChange={(event) =>
-                          void handleStatusChange(
-                            submission.id,
-                            event.target.value as SubmissionStatus,
-                          )
-                        }
-                        className={cn(
-                          "rounded-[var(--radius-ui)] border border-border bg-surface px-3 py-2 text-sm text-foreground outline-none focus:border-border-strong",
-                          updatingId === submission.id && "opacity-60",
-                        )}
-                      >
-                        {SUBMISSION_STATUSES.map((status) => (
-                          <option key={status} value={status}>
-                            {status}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                  </div>
-
-                  <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-                    <div>
-                      <dt className="text-muted">Genre</dt>
-                      <dd className="mt-0.5 text-foreground">{submission.genre}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-muted">Referral source</dt>
-                      <dd className="mt-0.5 text-foreground">
-                        {submission.referralSource}
-                      </dd>
-                    </div>
-                  </dl>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpandedId(expanded ? null : submission.id)
-                    }
-                    className="mt-4 text-sm text-gold-text transition hover:text-gold-bright"
+          {submissions.length === 0 ? (
+            <p className="mt-10 text-sm text-muted">No submissions yet.</p>
+          ) : (
+            <div className="mt-8 space-y-4">
+              {submissions.map((submission) => {
+                const expanded = expandedId === submission.id;
+                return (
+                  <article
+                    key={submission.id}
+                    className="rounded-[var(--radius-ui)] border border-border bg-surface-card p-5"
                   >
-                    {expanded ? "Hide details" : "View details"}
-                  </button>
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                      <div className="min-w-0 space-y-1">
+                        {submission.serialNumber ? (
+                          <p className="text-xs font-semibold uppercase tracking-wide text-gold-text">
+                            Serial Number: {submission.serialNumber}
+                          </p>
+                        ) : null}
+                        <h2 className="text-lg font-semibold text-foreground">
+                          <span className="text-muted">Name:</span>{" "}
+                          {submission.name}
+                        </h2>
+                        <p className="text-sm text-muted">
+                          {submission.email} · {submission.phone}
+                        </p>
+                      </div>
 
-                  {expanded ? (
-                    <div className="mt-4 space-y-4 border-t border-border pt-4 text-sm">
-                      <div>
-                        <p className="text-muted">Work experience</p>
-                        <p className="mt-1 whitespace-pre-wrap text-foreground">
-                          {submission.workExperience}
+                      <div className="flex shrink-0 flex-col items-end gap-3">
+                        <p className="text-xs text-muted">
+                          Submitted {formatDate(submission.createdAt)}
                         </p>
+                        <label className="flex flex-col items-end gap-1.5">
+                          <span className="text-xs uppercase tracking-wide text-muted">
+                            Status
+                          </span>
+                          <select
+                            value={submission.status}
+                            disabled={updatingId === submission.id}
+                            onChange={(event) =>
+                              void handleStatusChange(
+                                submission.id,
+                                event.target.value as SubmissionStatus,
+                              )
+                            }
+                            className={cn(
+                              "rounded-[var(--radius-ui)] capitalize border border-border bg-surface px-3 py-2 text-sm text-foreground outline-none focus:border-border-strong",
+                              updatingId === submission.id && "opacity-60",
+                            )}
+                          >
+                            {SUBMISSION_STATUSES.map((status) => (
+                              <option key={status} value={status}>
+                                {status}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      </div>
+                    </div>
+
+                    <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+                      <div>
+                        <dt className="text-muted">Genre</dt>
+                        <dd className="mt-0.5 text-foreground">
+                          {submission.genre}
+                        </dd>
                       </div>
                       <div>
-                        <p className="text-muted">Consult reason</p>
-                        <p className="mt-1 whitespace-pre-wrap text-foreground">
-                          {submission.consultReason}
-                        </p>
+                        <dt className="text-muted">Referral source</dt>
+                        <dd className="mt-0.5 text-foreground">
+                          {submission.referralSource}
+                        </dd>
                       </div>
-                      {submission.additionalInfo ? (
+                    </dl>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpandedId(expanded ? null : submission.id)
+                      }
+                      className="mt-4 text-sm text-gold-text transition hover:text-gold-bright"
+                    >
+                      {expanded ? "Hide details" : "View details"}
+                    </button>
+
+                    {expanded ? (
+                      <div className="mt-4 space-y-4 border-t border-border pt-4 text-sm">
                         <div>
-                          <p className="text-muted">Additional info</p>
+                          <p className="text-muted">Work experience</p>
                           <p className="mt-1 whitespace-pre-wrap text-foreground">
-                            {submission.additionalInfo}
+                            {submission.workExperience}
                           </p>
                         </div>
-                      ) : null}
-                    </div>
-                  ) : null}
-                </article>
-              );
-            })}
-          </div>
-        )}
+                        <div>
+                          <p className="text-muted">Consult reason</p>
+                          <p className="mt-1 whitespace-pre-wrap text-foreground">
+                            {submission.consultReason}
+                          </p>
+                        </div>
+                        {submission.additionalInfo ? (
+                          <div>
+                            <p className="text-muted">Additional info</p>
+                            <p className="mt-1 whitespace-pre-wrap text-foreground">
+                              {submission.additionalInfo}
+                            </p>
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

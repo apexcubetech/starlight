@@ -18,6 +18,7 @@ export async function GET() {
       success: true,
       submissions: submissions.map((submission) => ({
         id: String(submission._id),
+        serialNumber: submission.serialNumber ?? "",
         name: submission.name,
         email: submission.email,
         phone: submission.phone,

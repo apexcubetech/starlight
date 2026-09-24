@@ -7,9 +7,11 @@ import {
 export { SUBMISSION_STATUSES, type SubmissionStatus };
 
 export interface IStorySubmission {
+  serialNumber: string;
   name: string;
   email: string;
   phone: string;
+  normalizedPhone: string;
   genre: string;
   workExperience: string;
   consultReason: string;
@@ -22,9 +24,11 @@ export interface IStorySubmission {
 
 const StorySubmissionSchema = new Schema<IStorySubmission>(
   {
+    serialNumber: { type: String, required: true, unique: true, maxlength: 16 },
     name: { type: String, required: true, maxlength: 120 },
     email: { type: String, required: true, maxlength: 254 },
     phone: { type: String, required: true, maxlength: 20 },
+    normalizedPhone: { type: String, required: true, maxlength: 20, index: true },
     genre: { type: String, required: true, maxlength: 300 },
     workExperience: { type: String, required: true, maxlength: 5000 },
     consultReason: { type: String, required: true, maxlength: 5000 },
@@ -40,6 +44,12 @@ const StorySubmissionSchema = new Schema<IStorySubmission>(
   { timestamps: { createdAt: true, updatedAt: false } },
 );
 
-export const StorySubmission =
-  models.StorySubmission ||
-  model<IStorySubmission>("StorySubmission", StorySubmissionSchema);
+// Next.js hot reload keeps a stale Mongoose model; re-register when the schema changes.
+if (models.StorySubmission) {
+  delete models.StorySubmission;
+}
+
+export const StorySubmission = model<IStorySubmission>(
+  "StorySubmission",
+  StorySubmissionSchema,
+);

@@ -7,16 +7,16 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type AdminPageProps = {
-  searchParams: Promise<{ admin?: string }>;
-};
+// type AdminPageProps = {
+//   searchParams: Promise<{ admin?: string }>;
+// };
 
-export default async function AdminPage({ searchParams }: AdminPageProps) {
-  const params = await searchParams;
+export default async function AdminPage() {
+  // const params = await searchParams;
 
-  if (params.admin !== "1") {
-    notFound();
-  }
+  // if (params.admin !== "1") {
+  //   notFound();
+  // }
 
   return <AdminDashboard />;
 }
