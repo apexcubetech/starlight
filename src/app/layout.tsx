@@ -14,6 +14,7 @@ import { LANGUAGE_COOKIE_KEY, parseSiteLanguage } from "@/lib/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} - ${siteConfig.personName}`,
     template: `%s | ${siteConfig.name}`,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: siteConfig.name,
+    url: siteConfig.url,
   },
 };
 
